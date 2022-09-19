@@ -1,0 +1,13 @@
+テーブルを作成する
+
+レコードを挿入する
+
+レコードを削除する
+
+抽出
+
+テストデータ大量生成
+https://qiita.com/tayasu/items/c5ddfc481d6b7cd8866d
+https://www.softel.co.jp/blogs/tech/archives/4730
+
+insert into item () values ();

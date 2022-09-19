@@ -1,0 +1,34 @@
+クローンする
+    git clone リポジトリパス
+
+リポジトリを新規作成し登録する
+    github.comでリポジトリを作成
+
+    ルートフォルダ上でgit init
+    git init
+
+    ステージング
+        個々のファイルをステージングする
+        git add hello.html
+        変更のあったファイルをすべてステージングする
+        git add -A
+
+    コミットする
+    git commit -m "メッセージ"
+
+    リモートリポジトリとローカルリポジトリをリンクさせる
+    git remote add アクセス先 gitのurl
+    git remote add origin https://github.com//awesome.git
+
+    pushする
+    git push アクセス先 ブランチ名
+    git push origin master
+
+ある時点のcommitに戻す
+    git reset --hard ハッシュ値
+
+remoteリポジトリを変更する
+    1. 現状のremoteリポジトリを確認
+    git remote -v
+    2. 新しいものに設定
+    git remote set-url origin コピーしたurl

@@ -1,0 +1,70 @@
+●RESTAPIの作成
+●@Scheduledアノテーションで定期実行
+●RestTemplateでRESTAPIの利用
+▲GradleでJavaプロジェクトの構築
+▲MavenでJavaプロジェクトの構築
+●SpringJDBCJdbcTemplateでSQL発行
+ファイルのアップロード
+    storageパッケージなんて無いんだが...
+    → 別記事参考
+(古かった)LDAPでユーザー認証
+Redisでメッセージング
+RabbitMQでメッセージング
+Neo4jでデータアクセス → よくわからない
+    ●Web画面フォーム入力チェック
+SpringBootActuatorで監視機能を追加
+JMSでメッセージング
+バッチサービスの作成
+    SpringBootログイン画面
+HATEOASでハイパーメディア駆動RESTAPIの作成
+PivotalGemFireでデータにアクセス
+SpringIntegrationシステム接続
+PivotalGemFireを使用したデータのキャッシュ
+    @Transactionalアノテーションでトランザクション管理
+    JPAでインメモリH2データアクセス
+    MongoDBでデータアクセス
+    ThymeleafWeb画面の作成
+SpringBootWARの作成
+@Asyncアノテーションで非同期メソッドの作成
+    Web画面フォーム送信処理
+    SpringBootプロジェクトの作成
+    WebSocketでインタラクティブWebアプリケーション作成
+開発環境構築EclipseSTSインストール
+AngularJSでRESTAPIの利用
+    jQueryでRESTAPIの利用
+RESTAPIでCORSを有効化
+SOAPWebサービスの使用
+SpringDataRESTAPIの自動生成(JPA)
+SpringDataRESTAPIの自動生成(Neo4j)
+SpringDataRESTAPIの自動生成(MongoDB)
+SpringDataRESTAPIの自動生成(GemFire)
+SOAPWebサービスの生成
+Springでデータキャッシング
+STSからCloudFoundryへデプロイ
+    DockerでSpringBoot
+開発環境構築IntelliJIDEAインストール
+VaadinでCRUDUIを作成
+NetflixEurekaサービスディスカバリ
+SpringCloudConfig集中設定
+MockMvcと@MockBeanでWebレイヤーテスト
+JPAでMySQLデータアクセス
+マルチモジュールプロジェクトの作成
+RestdocsでAPIドキュメント作成
+GoogleCloudPub/Subメッセージング
+WebFluxRESTAPIとWebClient
+SpringCloudContractサービス間テスト
+Vaultへのアクセス
+Vault設定
+Redisでリアクティブにデータアクセス
+    SpringBootアプリをAzureにデプロイ
+SpringCloudGatewayの構築
+SpringCloudLoadBalancerでクライアントサイド負荷分散
+SpringCloudStream
+SpringCloudDataFlow
+SpringCloudTask
+    SpringBootKubernetes
+R2DBCを使用したデータへのアクセス
+SpringCloudサーキットブレーカーガイド
+Wavefrontでメトリクス監視
+開発環境構築VSCodeインストール
+Cassandraを使用したデータへのアクセス

@@ -1,0 +1,24 @@
+ロードマップ
+https://qiita.com/haruto167/items/5a784df032518277f4a0
+
+ベストプラクティスを学ぶ
+    DRY
+    デザインパターン
+    Gogle Java Style Guide
+
+他人のソースを読む
+
+テストコードを学ぶ
+
+RDB
+
+    インクリメント
+        y = x++;
+        ↓
+        y = x;
+        x = x + 1;
+
+        y = ++x;
+        ↓
+        x = x + 1;
+        y = x;

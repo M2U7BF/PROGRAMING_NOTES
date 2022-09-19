@@ -1,0 +1,29 @@
+コンソールの出力
+    様々なメソッド : https://qiita.com/baby-degu/items/1046763163bc794870ea
+
+イベントに反応する
+    無名クラスを利用した表記
+        ELEMENT.addEventListener(TYPE, () => {
+            // 処理を記述
+        });
+
+    イベントの種類
+        input, change, etc
+        参照 : https://developer.mozilla.org/ja/docs/Web/Events
+
+    Enterを受け取る
+        https://1-notes.com/javascript-fire-event-of-enter-key/
+
+        text_form.addEventListener('keypress', test_ivent);
+
+        function test_ivent(e) {
+            if (e.keyCode === 13) { //処理 }
+                return false; //inputタグのフォーム送信などを無効化
+        }
+
+    ボタンの連動
+        https://javascript.programmer-reference.com/js-action-click/
+
+    ブラウザバック検知
+        window.addEventListenerでpopstateのイベントを呼べばいい
+        https://www.tdi.co.jp/miso/click-back-and-refresh-button

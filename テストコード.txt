@@ -1,0 +1,35 @@
+テストはテストフレームワークを使わなくてもできる
+https://qiita.com/standard-software/items/559d871794bfa38651f4
+
+テストコード例 : https://github.com/standard-software/stsLib.js/blob/master/Source/stsLib.js/stslib_core.js
+応用にてフレームワークを用いる
+
+本質
+function check(a, b) {
+  var message;
+  if (a !== b) {
+    message =
+        'A != B' + '\n' +
+        'A = ' + a + '\n' +
+        'B = ' + b;
+    alert(message);
+  }
+};
+
+・2つの値を比較して、差があれば、メッセージとかログとかを出す。
+・差がなければ何もしない。
+
+テスト駆動開発
+ex :
+check(1,  1);      //テスト1
+check(2,  1+1);    //テスト2
+check(10, addFunc(5, 5));   //テスト4
+
+ex :
+check(0, convert(-10));
+check(0, convert(-1));
+check(0, convert(0));
+check(1, convert(255));
+check(0, convert(256));
+check(0, convert(300));
+check(0.5, convert(128));

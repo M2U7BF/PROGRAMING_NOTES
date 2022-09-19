@@ -1,0 +1,82 @@
+そういうときには、テストファーストですな。
+
+//KHE000221さんのisSafeIPに必要なのは
+//このPosEx関数かな？
+function PosEx(Substr: string; S: string; P: Integer): Integer;
+begin
+  if P <= 0 then Result := 0
+  else Result := Pos(Substr, Copy(S, P, Length(S)));
+  if Result <> 0 then Result := Result + P - 1;
+end;
+
+//これがチェックコード
+procedure Check(A, B: Boolean);
+begin
+  if not(A = B) then
+  begin
+    Assert(False,
+      'エラーです:A=' + BoolToStr(A) + ':B=' + BoolToStr(B));
+  end;
+end;
+
+//ここでテストをおこなって
+//テストを通過するようにisSafeIPを実装できていればよい。
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Check(True, isSafeIP('0.0.0.0'));
+  Check(True, isSafeIP('255.255.255.0'));
+  Check(True, isSafeIP('255.255.0.0'));
+  Check(True, isSafeIP('0.0.0.255'));
+  Check(True, isSafeIP('192.168.0.1'));
+  Check(True, isSafeIP('192.168.0.01'));
+
+  Check(False, isSafeIP('192.168.0.-1'));
+
+  // 数字の桁が３桁より多い
+  Check(False, isSafeIP('0192.168.0.1'));
+  Check(False, isSafeIP('192.168.0000.1'));
+  Check(False, isSafeIP('192.168.0.0001'));
+  Check(False, isSafeIP('0001.0012.0123.000255'));
+
+  //桁が余分
+  Check(True, isSafeIP('192.02.03.04'));
+  Check(False, isSafeIP('0192.02.03.04'));
+  Check(True, isSafeIP('01.02.03.04'));
+
+  // 数字の数が４個より多い
+  Check(False, isSafeIP('12.34.56.78.90'));
+  Check(False, isSafeIP('12.34.56.78.90.123'));
+
+  // 末尾に余計なドット
+  Check(False, isSafeIP('124.083.147.202..'));
+  Check(False, isSafeIP('124.083.147.202...'));
+
+  //先頭に余計なドット
+  Check(False, isSafeIP('.124.083.147.202'));
+
+  //数値がない部分がある
+  Check(False, isSafeIP('.0.0.1'));
+  Check(False, isSafeIP('0.0..1'));
+
+  //数値が範囲外
+  Check(False, isSafeIP('256.255.255.0'));
+  Check(False, isSafeIP('255.255.0.256'));
+
+  //数値じゃない値が入っている
+  Check(False, isSafeIP('0.0F.0.255'));
+  Check(False, isSafeIP('0.0x0F.0.255'));
+  Check(False, isSafeIP('0.$0F.0.255'));
+end;
+
+このテストを通過していることが、
+isSafeIPの関数仕様を現しているので
+どういう文字がisSafeIPで許容されるか否かがすぐわかるし
+isSafeIPをリファクタリングして内部実装が変更になっても
+このテストが通れば、仕様をみたしている関数ということになります。
+
+上のisSafeIPではエラーが起きるし
+下のisSafeIPでは正しく動作していることを確認しました。
+
+「桁が余分」の所の微妙な仕様なんかは
+人間としてはどっちでもいい気もするけど
+厳密さはテストでチェックしておかないと、わからないな。

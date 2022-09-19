@@ -1,0 +1,12 @@
+関数
+    処理をする
+
+mixin
+    繰り返しを省略する
+
+    @mixin mixin-color() {
+        color: red;
+    }
+
+    引数があれば〜
+        初期値を設定する

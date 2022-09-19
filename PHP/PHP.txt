@@ -1,0 +1,115 @@
+PHPとは
+    サーバーサイドの言語
+
+インライン
+    <?php 〜 ?>
+
+行末
+    ; //セミコロン
+
+命名規則
+	予約語 : 小文字
+	インデント :
+		スペース4つ(タブを使用しない)
+	定数 : 大文字
+	命名の区切り : アンダースコア
+	メソッド : camelCase
+	ファイル :
+		最後に空行をいれる。
+		?> 省略する。
+	クラス :
+		閉じカッコ } は内容を記述した次の行に記述する。
+		開きカッコの後、閉じカッコの前にスペースは記述しない。
+
+宣言
+	変数
+		$変数名 = 値;
+
+		表記
+		$userName
+
+	配列
+		$fruits = array('peach', 'banana','grape'); //arrayを使った方法
+		$fruits[0] //参照
+
+		$color[0] = 'red';
+		$color[0] //arrayを使わない方法
+
+		多次元配列
+			$number = array(
+				array('red','aka'),
+				array('blue','ao')
+				);
+			echo $number[0][0];
+
+		連想配列
+			$foods = array('tomato' => '100', 'banana' => '20', 'grape' => '10');
+			echo $foods['tomato'];
+
+		操作
+			末尾追加
+				$colors[] = 'green'; //[]と指定
+
+	関数
+		function 関数名($hoge){
+			// 処理
+		}
+
+	スーパーグローバル
+		スクリプト全体を通してすべてのスコープで使用可能な変数
+		$_POST
+
+
+文字列
+	表記
+		",'のいずれかで囲む
+	連結
+		"lesson"."for"."php" //ドットで連結
+		$name .= "some"; //文字の加算は.を用いる。省略時も同様。
+	インライン
+		"My name is ${name}" //変数展開でインライン表記ができる
+		ダブルクオーテーションで囲む時のみ有効
+
+条件演算子
+	!(条件) //否定
+
+制御構文
+	if文
+		if(){} elseif(){} else {}
+	switch文
+		switch(変数){
+			case 値:
+			処理
+			break;
+			default:
+			処理
+			break;
+		}
+	for文
+		for($i = 0; $i < 5; $i++){
+			echo $i;
+		}
+	foreach文
+		foreach ($animalList as $animal){
+		print $animal."<br>";
+		}
+	while文
+		$count = 0;
+		while($count<=5){
+			echo $count."<br>";　
+			$count++;
+		}
+
+各種メソッド
+	出力
+		echo
+	処理の中止
+		die
+
+フォームのデータを受け取る
+	$_POST['nameの値']  //formのname指定に対応した値を取り出せる
+
+htmlの要素を繰り返す
+	for($i=0; $i<10; $i++){
+		echo "<option value='{$i}'>{$i}</option>"
+	}

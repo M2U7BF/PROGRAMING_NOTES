@@ -1,0 +1,8 @@
+@Data ･･･全フィールドに対して「getter/setter」でアクセスすることができ、 hashCode()、equals()、toString() を自動生成します
+@NoArgsConstructor ･･･クラスに付与することで、デフォルトコンストラクタを自動生成します
+@AllArgsConstructor ･･･クラスに付与することで、全フィールドに対する初期化値を引数にとるコンストラクタを自 動生成します
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Member {･･

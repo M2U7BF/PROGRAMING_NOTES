@@ -1,0 +1,10 @@
+https://style.potepan.com/articles/27434.html
+
+データを列毎の配列で保持
+
+出力ファイルの作成
+FileWriter fw = new FileWriter("ファイルの名.csv", false);
+
+PrintWriterクラスのオブジェクトを生成
+PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
+

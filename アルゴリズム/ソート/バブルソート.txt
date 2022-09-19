@@ -1,0 +1,13 @@
+public bubble(a: number[]): number[] {
+  var i: number = 0, j: number = 0;
+  
+  for (; i < a.length; i++) {
+    for (j = a.length - 1; j > i; j--) {
+      //上の要素と比較し、上のほうが大きければ互いに交換する
+      if (a[j] < a[j - 1]) {
+        this.swap(a, j - 1, j);
+      }
+    }
+  }
+  return a;
+}

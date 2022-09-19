@@ -1,0 +1,41 @@
+エラー①
+remote:        [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile (default-compile) on project FingeringOptimizationApp: Fatal error compiling: invalid target release: 17 -> [Help 1]
+
+参考 : https://rainbow-engine.com/failed-execute-orgapache-maven/
+→ JAvaのバージョンが違う
+→ pom.xmlで1.8に直し解決
+
+
+エラー②
+[ERROR] /tmp/build_ff1d075e/src/test/java/ProcessTest.java:[1,12] package form does not exist
+       [ERROR] /tmp/build_ff1d075e/src/test/java/ProcessTest.java:[3,15] package service does not exist
+
+→ test フォルダをsrc/からだして ルートフォルダ以下に移動
+
+
+エラー③
+no main manifest attribute, in target/FingeringOptimizationApp-1.0-SNAPSHOT.jar
+
+参考 : https://ja.getdocs.org/maven-how-to-create-a-manifest-file-with-maven
+
+
+エラー④
+Exception in thread “main” java.lang.NoClassDefFoundError: org/springframework/boot/SpringApplication
+
+参考 : https://mashpote.net/2019/03/05/spring-boot%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92maven%E3%81%A7jar%E5%8C%96%E3%81%97%E5%AE%9F%E8%A1%8C%E3%81%97%E3%81%9F%E9%9A%9B%E3%81%AE%E3%82%A8%E3%83%A9/
+参考 : https://stackoverflow.com/questions/64639836/plugin-org-springframework-bootspring-boot-maven-plugin-not-found
+
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <!-- ここから -->
+    <executions>
+      <execution>
+        <goals>
+          <goal>repackage</goal>
+        </goals>
+      </execution>
+    </executions>
+    <!-- ここまで -->
+  </plugin>
+を追加

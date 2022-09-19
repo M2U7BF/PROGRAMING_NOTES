@@ -1,0 +1,12 @@
+selectタグに新規項目追加
+    jsでテキストボックスを表示非表示
+
+テキストボックスでよく使う入力項目を表示
+    datalistの利用
+    候補リストをdatalistで作る
+    テキストボックスのタグとdatalistをidで結びつける
+    <p>規格 : <input type="text" name="sample" list="STANDARDS" placeholder="テキスト入力もしくはダブルクリック" autocomplete="off"></p>
+    <datalist id="STANDARDS">
+        <option value="候補1"></option>
+        <option value="候補2"></option>
+    </datalist>

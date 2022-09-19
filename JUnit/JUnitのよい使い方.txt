@@ -1,0 +1,49 @@
+ Junit利用の利点
+    テストを書くと一般的に開発速度が早くなる
+    忙しくてテスト書く時間がない → "さびた斧で木を切る木こりに「先に研いだほうがいいんじゃ」と言ったが「いま木を切るので忙しい」と答えた"
+
+テスト利用のコツ
+    テスト駆動開発
+        テストを先に書く
+        テスト失敗を確認してから実装
+            中身はデタラメにして失敗を確認する(null,-1,ランダムな数字を返す..etc)
+    
+    テストメソッド名をわかりやすくする
+        日本語表記の例)
+        @Test
+        void 受注前に請求状態には遷移できない{...}
+
+        英語表記の例) ("いくつかの条件を満たした場合のみ、テストを実行する必要があります。" と書いてある)
+        @Test
+        @DisplayName("Should only run the test if some criteria are met")
+        void shouldOnlyRunTheTestIfSomeCriteriaAreMet() {
+            Assumptions.assumeTrue(Fixture.apiVersion() > 10);
+            assertEquals(1, 1);
+        }
+
+    1メソッド内にassertionを書きすぎない
+        多くなる場合はテストを分ける
+        必要に応じてassetAllを使う
+
+        void fizzBuss {
+            assetAll(
+                () -> assertEquals(a,b),
+                () -> assertNull(a2),
+                () -> assertEquals(a3,b3),
+                () -> assertEquals(a4,b4)
+            );
+        }
+    
+    カバレッジにこだわり過ぎない
+        getter/setterのテストは不要
+        実証済みコード(著名ライブラリなど)の挙動はテストしない
+
+    テストを優先的に書くべき対象
+        実装が不安な箇所
+            ex)
+            いろんな条件分岐がある
+            状態が様々に変化する
+            複雑なアルゴリズムが適用される
+        バグ、リグレッションが発生思想な箇所
+        リファクタリングを施す箇所
+

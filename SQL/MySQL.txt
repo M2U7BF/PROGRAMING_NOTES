@@ -1,0 +1,38 @@
+エラー
+    ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+    解決 : mysql.server start
+
+起動
+    mysql.server start
+
+プレースホルダ
+    SQL文の中の「変動する箇所」に使用するもの
+    SQLインジェクション攻撃を防げる
+    :に続けてプレースホルダーの代替文字列を記述。カラム名と同じにすることが多い。
+    sql = "SELECT * FROM user WHERE name=:name";
+
+MySQLコマンドを立ち上げる
+    パスワード未設定時(初期)
+        mysql -u root
+    パスワード設定後
+        mysql -u root -p
+
+コマンド操作
+    db一覧
+        show dataases;
+
+    dbを選択する
+        use DB名;    
+
+    テーブルの一覧
+        show tables;
+
+    userの追加
+        CREATE USER 'ユーザ名'@'ホスト名' IDENTIFIED BY 'パスワード';
+            ホスト名はlocalhostも可
+    userを削除
+        DROP USER 'user'@'localhost';
+
+sql文
+    外部キーの記述
+    https://www.sejuku.net/blog/54072

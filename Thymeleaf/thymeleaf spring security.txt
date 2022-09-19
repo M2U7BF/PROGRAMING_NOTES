@@ -1,0 +1,3 @@
+エラー
+    org.thymeleaf.context.IWebContext.getExchange()が出る
+    → バージョン指定をなくす

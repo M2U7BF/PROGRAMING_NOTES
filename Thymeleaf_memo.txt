@@ -1,0 +1,287 @@
+Thymeleaf
+    テンプレートエンジン
+    htmlタグに「th:〇〇」を埋め込むことで、HTMLファイルをそのままJavaで使用できる。デザイナーとの業務分業化が容易。
+
+thymeleaf上で変数を生成する
+    変数を宣言
+    <div th:with="message = 'Hello World!!'">
+
+    listを作成する    https://www.whizz-tech.co.jp/5174/
+    ${ {と記述するときには空白が必須。
+    <div th:each="val : ${ { 'ノック','フック','パンチ' } }">
+        <p th:text="${val}"></p>
+    </div>
+
+    mapを作成する
+    <th:block th:with="map=${ {fruit:'マンゴスチン', vegetable:'キャベツ', animal:'クマムシ'} }">
+        <p th:text="${map.fruit}"></p>
+        <p th:text="${map.vegetable}"></p>
+        <p th:text="${map.animal}"></p>
+    </th:block>
+
+    mapのlistを作成する
+    <th:block th:with="list=${ { {number:'71', name:'久慈'},{number:'78',name:'平田'},{number:'84',name:'日高'} } }">
+        <div th:each="map : ${list}">
+            <p th:text="${map.number + ':' + map.name}"></p>
+    ...
+
+URLを書く
+    @{}を使うが{}の中身の書き方によっても意味合いが異なる。
+    @{"sample"} //そのページのURL位置からURLリクエストを出す
+    /home/sample → /home/sample/sample
+    @{"/home/sample"} //ルートからたどったURLリクエストを出す(絶対パスに類似)
+    /home/sample → /home/sample
+
+    クエリパラメータをつける    https://iikanji.hatenablog.jp/entry/2020/05/24/105631
+    <a th:href="/me(name=${name}, age=${age})">
+
+テキストを外部ファイルから読み込む
+
+    メッセージを設定する
+        /WEB-INF/templates/テンプレート名.html と同じ階層にある テンプレート名.properties ファイル にて、
+        テンプレート名.キー名 = 文字列 を表記する。
+        home.welcome=¡Bienvenido a nuestra tienda de comestibles!
+    テキストとメッセージの結びつけに用いる構文
+        #{}
+
+    <p th:text="#{テンプレート名.キー名}">Welcome to our grocery store!</p>
+
+text属性
+    この属性は値の式を評価した結果をタグのボディに設定(置換)します。
+
+    01:直接文字を埋め込む
+    <h1 th:text="'hello world'">表示する部分</h1>
+
+    02:インライン処理
+    <h1>こんにちは![[${name}]]さん</h1>
+
+    03:値結合(リテラル置換)
+    パイプを用いて省略表記も可能
+    <h1 th:text="'明日は、' + '晴れ' + 'です。'">表示する部分</h1>
+    <h1 th:text="|The name is ${name}|"></h1>
+
+ローカル変数を宣言
+    with属性を用いてThymeleafの変数を宣言する。
+    スコープは定義されたタグ内部のみ
+    <div th:with="a=1,b=2">
+        <span th:text="|${a} + ${b} = ${a+b}|"></span>
+    </div>
+
+条件演算
+    三項演算子(if条件,処理,else処理)
+    「 条件 ? 値1  :値2 」
+    <p th:text="${name} == '太郎'? '太郎さんです!':'太郎さんではありません。'"></p>
+
+        複数の例
+            !isTokenFound(passToken) ? "invalidToken"
+                : isTokenExpired(passToken) ? "expired"
+                : null;
+
+    条件分岐(true)
+    <div th:if="${name} == '太郎'">
+        <p>太郎さんです!</p>
+    </div>
+
+    条件分岐(false)
+    <div th:unless="${name} == '花子'">
+        <p>花子さんではありません。</p>
+    </div>
+
+    divタグを増やさない書き方
+    th:block タグを使う。th:blockタグはレンダリング後に消去される
+	<th:block th:if="${name} == '太郎'">
+		<p>太郎さんです!</p>
+	</th:block>
+
+    応用
+        複雑な場合
+        ${}で大きく囲む。中の変数は素で書く。
+        ${ position[0]==i+1 && position[1]==j+1 }
+
+switch
+    <div th:switch="${name}">
+        <p th:case="太郎" th:text="|${name}です!|"></p>
+        <p th:case="ジロウ" th:text="|${name}です!|"></p>
+        <p th:case="花子" th:text="|${name}です!|"></p>
+        <p th:case="*">名簿にありません</p>
+    </div>
+
+データの参照
+    アクセサーを用意しておくことで、オブジェクト.フィールド で参照できる。
+
+    <p th:text="${mb.id}">ID</p>
+    <p th:text="${mb.name}">名前</p>
+    <p th:text="${mb['id']}">ID:[]でアクセス</p>
+    <p th:text="${mb['name']}">名前:[]でアクセス</p>
+
+    object属性(省略表記)
+    object属性でobjectを参照することで*{}という表記が可能になる
+    <div th:object="${mb}">
+        <p th:text="*{id}">ID</p>
+        <p th:text="*{name}">名前</p>
+        <p th:text="*{['id']}">ID:[]でアクセス</p>
+        <p th:text="*{['name']}">名前:[]でアクセス</p>
+    </div>
+
+    Form binding 機能
+        対象になるタグや属性は指定がある。
+        タグ内で同じオブジェクトを参照する
+        <div th:Object="${オブジェクト名}">
+            <p>[[*{フィールド名}]]</p>
+        </div>
+
+        タグにid属性, name属性, value属性を付与する
+        field属性
+        <input type="text" th:field="*{rightNum}">
+
+listの参照
+    通例どおり、index指定する
+    <p th:text="${list[0]}">方角</p>
+    <p th:text="${list[1]}">方角</p>
+
+mapの参照
+    .もしくは[]で参照
+    <p th:text="${map.tanaka.name}">名前1</p>
+    <p th:text="${map.suzuki.name}">名前2</p>
+    <p th:text="${map['tanaka']['name']}">名前1:[]でアクセス</p>
+    <p th:text="${map['suzuki']['name']}">名前2:[]でアクセス</p>
+
+繰り返し(repeat)
+    th:each=” 要素格納用変数: ${ 繰り返し処理するオブジェクト}”
+    <div th:each="member : ${members}">
+        <p>[[${member.id}]] : [[${member.name}]]</p>
+    </div>
+
+    ステータス
+    size･･･【繰り返し処理するオブジェクト】のサイズを表示する
+    count･･･1 から始まるインデックス、現在のインデックスを表示する
+    current･･･現在の繰り返し要素のオブジェクトを表示する
+    even･･･現在の要素が偶数番目か判定する。偶数なら true、偶数じゃないなら false を表示する
+    odd･･･現在の要素が奇数番目か判定する。奇数なら true、奇数じゃないなら false を表示する
+    first･･･現在の要素が最初か判定する。最初なら true、最初じゃないなら false を表示する
+    last･･･現在の要素が最後か判定する。最後なら true、最後じゃないなら false を表示する
+
+    <div th:each="member, s : ${members}" th:object="${member}">
+        <p>
+        index-> [[${s.index}]], count-> [[${s.count}]],
+        size-> [[${s.size}]], current-> [[${s.current}]],
+        even-> [[${s.even}]], odd-> [[${s.odd}]],
+        first-> [[${s.first}]], last-> [[${s.last}]],
+        [[*{id}]] : [[*{name}]]
+        </p>
+    </div>
+
+    単純なループ処理を行う
+    th:each="i: ${#numbers.sequence(0, 20)}"
+    (変数iを宣言し、0~20 まで行う)
+
+    イテレータを利用してループ処理を行う
+    ステータスを利用する
+    []の中に変数のindexを入れることができる
+
+    <tr th:each="nm ,iter : ${...}">
+            <td th:text="${form.name[iter.index]}">商品名</td>
+
+ユーティリティオブジェクト
+    便利機能
+    現在の時刻を取得したりできる
+
+    フォーマットの使用例)
+    <div th:with="x=1000000, y=123456.789">
+    整数のフォーマット:<span th:text="${#numbers.formatInteger(x, 3, 'COMMA')}"></ span><br/>
+    浮動小数点のフォーマット:<span th:text="${#numbers.formatDecimal(y, 3, 'COMMA', 2, 'POINT')}"></span>
+    </div>
+
+    日時の例)
+    <div th:with="today=${#dates.createNow()}">
+        yyyy/mm/dd形式:<span th:text="${#dates.format(today, 'yyyy/MM/dd')}"></ span><br/>
+        yyyy年mm月dd日形式:<span th:text="${#dates.format(today, 'yyyy年MM月dd日')}"></ span><br/>
+        yyyy年:<span th:text="${#dates.year(today)}"></span><br/>
+        MM月:<span th:text="${#dates.month(today)}"></span><br/>
+        dd日:<span th:text="${#dates.day(today)}"></span><br/>
+        曜日:<span th:text="${#dates.dayOfWeek(today)}"></span><br/>
+    </div>
+
+    文字列の例)
+    <div th:with="str1='abcdef'">
+        大文字変換:<span th:text="${#strings.toUpperCase(str1)}"></span><br/>
+        空文字判定:<span th:text="${#strings.isEmpty(str1)}"></span><br/>
+        長さ:<span th:text="${#strings.length(str1)}"></span><br/>
+    </div>
+
+フラグメント fragment の利用
+    定義する
+    <span th:fragment="one">ワン</span>
+    <span th:fragment="two">ツー</span>
+    <span th:fragment="three">スリー</span>
+
+    フラグメントを埋め込む
+        タグ直下に埋め込む
+        fragmentをinsert属性で指定する
+        <div id="one" th:insert="fragment :: one"></div>
+
+        置換する
+        fragmentをreplace属性で指定する
+        別のファイルの場合、~{}をつけ、~{ソースパス :: フラグメント名}で指定。
+        <div id="three" th:replace="~{fragment :: three}"></div>
+
+レイアウト化
+    依存関係の追加
+    gradle
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+
+    レイアウト利用の宣言
+    <html タイムリーフ利用の宣言 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    置き換える部分(各ビューで異なる部分)を指定する
+    layout:fragment=”識別する名称”で埋め込む場所を設定
+    <div layout:fragment="content" align="center"></div>
+
+    レイアウト呼び出し
+        レイアウト利用の宣言をする
+        <html タイムリーフ利用の宣言 レイアウト利用の宣言 layout:decorate="~{commons/レイアウト名}">
+
+        利用部分の記述
+        layout:fragment="置き換える部分の識別名称"
+        <div layout:fragment="content">
+		    <h1>PageA</h1>
+	    </div>
+
+データを編集する
+    テキストを分割する
+     ${#strings.arraySplit(分割対象, '何で分割するか')}
+
+
+selectタグ optionタグのselected属性を扱う
+    条件演算子とともに使う。
+    tureのときのみ追加される。
+    <option th:selected="${i==75}"></option>
+
+タグ内に設定するJavaScript JQueryの関数にThymeleafの変数を代入する
+    th:onchange="calc([[${variable}]])"
+
+    繰り返し処理の場合
+    th:onchange="calcTotal([[${itemData.price[iter.index]}]],[[${itemData.numPurchase[iter.index]}]])"
+
+Springの認証との連携
+    認証済みかどうかで表示を切り替える    https://www.docswell.com/s/MasatoshiTada/KGVY9K-spring-security-intro#p27
+    <p sec:authorize="" >
+
+    認可を判断して表示内容を切り替える
+        <div sec:authorize-url="/admin">
+        /admin へアクセスできる場合は表示される。
+        </div>
+
+        <div sec:authorize-url="POST /admin">
+        /admin へPOSTリクエストを行える場合は表示される。
+        </div>
+
+    認証済みユーザーの情報の表示    https://www.docswell.com/s/MasatoshiTada/KGVY9K-spring-security-intro#p28
+    principalでgetPrincipal()が実行され,UserDetailsの情報にアクセスできるっぽい
+    <p sec:authentication="principal.loginuser.name"></p>
+    <p sec:authentication="name">Authenticationのname値</p>
+
+    ロールの有無で表示内容を切り替える    https://baubaubau.hatenablog.com/entry/2020/12/04/215710
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+    ADMINロールを持っている場合のみ表示される
+    </div>

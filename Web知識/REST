@@ -1,0 +1,4 @@
+REST(REpresentational State Transfer)はWebサービスの設計モデルです。
+RESTなWebサービスは、そのサービスのURIにHTTPメソッドでアクセスすることでデータの送受信を行います。
+
+現在多種多様なWebサービスがRESTのAPIを公開しています。

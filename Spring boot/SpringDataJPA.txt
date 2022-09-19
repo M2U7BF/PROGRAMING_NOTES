@@ -1,0 +1,63 @@
+エラー
+    起動してもdata.sqlが読み込まれない
+        localのサーバーにアクセスし、画面を表示する時に読み込まれるっぽい
+
+    hikariData の読み込みが長い
+
+    
+@Lob
+    BLOBなど、データの大きいカラムにつける。
+
+DB設計
+    他のentityの主キーを外部キーとして設定する   https://github.megascus.dev/jpa-spec/docs/apidocs/javax/persistence/OneToOne.html
+    //子
+    @Entity
+    public class Employee {
+        @Id Integer id;
+
+        @OneToOne @MapsId
+        EmployeeInfo info;
+        ...
+    }
+
+    //親
+    @Entity
+    public class EmployeeInfo {
+        @Id Integer id;
+        ...
+    }
+
+
+データを新規追加する
+    1 serviceクラスでentityを生成
+        entityをnewし、setterで設定。
+        idをAIに している場合、idのセットは省略可能
+
+        Entity e = new Entity();
+        e.setName();
+        ...
+        entityRepository.save(e);
+
+
+    参考 : https://medium-company.com/spring-boot-thymeleaf%E3%81%A7%E6%96%B0%E8%A6%8F%E7%99%BB%E9%8C%B2%E7%94%BB%E9%9D%A2%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B/
+    参考 : https://medium-company.com/thymeleaf%E3%81%A7post%E3%81%97%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92jpa%E3%81%A7%E7%99%BB%E9%8C%B2/#i-4
+
+データを更新する
+    デフォルトの機能を使う
+        save()メソッド
+        entityを引数にとり、 一部分のフィールドのみを保存すると言う操作は不可能
+    @Queryの機能を使う
+        JPQL, native の どちらでもクエリ文を記述できる
+        JPQLではentityのクラス名、フィールド名をそのまま利用する
+
+        1 抽象メソッドの登録
+            @Query("update SomeEntityClass set field1=:param1, field2=:param2 where field3=:param3")
+            void saveOne(@Param("pram1") Integer 任意, @Param("param2") String 任意,...);
+            //:名称で プレースホルダーを設定
+            //引数に@Param()をつけ、プレースホルダーと紐付ける
+        2 @Modifyingの付与
+            update, deleteのメソッドを@Queryで登録する場合、付与。
+        3 @Transactionalの設定
+            Serviceクラスに付与
+
+外部結合

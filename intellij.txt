@@ -1,0 +1,4 @@
+propertiesファイルが文字化け
+    エンコードをutf-8にする
+
+https://tech.contracts.co.jp/entry/2021/01/28/103048

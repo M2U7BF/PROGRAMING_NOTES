@@ -1,0 +1,37 @@
+<!-- リストにリンクのfragmentの文字列を入れといて、それを読みこむ -->
+
+<th:block xmlns:th="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <!-- TODO : 要素間に｢|｣を入れる -->
+    <div th:fragment="header" th:switch="${#httpServletRequest.requestURI}">
+        <ul th:case="@{/order/main}">
+            <th:block th:each="fragmentName : ${ {'choice','logout'} }"
+                sec:authorize="hasRole('GENERAL')">
+                <li class="headerLinks"
+                    th:insert="~{layout/header-url-list::${fragmentName}}"></li>
+            </th:block>
+        </ul>
+        <ul th:case="@{/order/choice}">
+            <th:block th:each="fragmentName : ${ {'main','history'} }">
+                <li class="headerLinks"
+                    th:insert="~{layout/header-url-list::${fragmentName}}"></li>
+            </th:block>
+        </ul>
+        <ul th:case="@{/order/choice{correct}}">
+            <th:block th:each="fragmentName : ${ {'logout'} }">
+                <li class="headerLinks"
+                    th:insert="~{layout/header-url-list::${fragmentName}}"></li>
+            </th:block>
+        </ul>
+    </div>
+</th:block>
+
+<!-- 以下urlリスト -->
+
+<th:block xmlns:th="http://www.w3.org/1999/xhtml">
+  <a th:fragment="main" th:href="@{/order/main}">メインメニュー</a>
+  <!-- 注文 -->
+  <a id="choice" th:fragment="choice" th:href="@{/order/choice}">食材の注文</a>
+  <!-- 情報の閲覧 -->
+  <a id="history" th:fragment="history" th:href="@{/order/history}">注文履歴</a>
+</th:block>

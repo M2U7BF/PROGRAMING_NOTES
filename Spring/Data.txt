@@ -1,0 +1,16 @@
+JPA
+    Java標準ORM(Object-Relational Mapping)
+    ORMは、Javaで言うオブジェクトとデータベースのマッピングを行う役割を持ちます。
+    データベース上のデータをマッピングするJavaのオブジェクトをEntityと呼びます。
+Spring Data 
+Spring Data JPA
+    
+    ソート    https://qiita.com/parapore/items/4acffd670fc913e05d85
+        方法1 Repositoryクラスで命名規則に従ったメソッド名を書く
+            命名規則 → https://qiita.com/shindo_ryo/items/af7d12be264c2cc4b252
+        方法2 Serviceクラスで実装する
+            Sort.by()を使用
+        方法3 @Queryで実装
+
+外部参照
+    @JoinColumn https://qiita.com/terumu723/items/5d5b40882b4517cfb16a

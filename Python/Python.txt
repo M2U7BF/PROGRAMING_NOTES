@@ -1,0 +1,54 @@
+https://www.javadrive.jp/python/
+キカガク : https://blog.kikagaku.co.jp/category/programming/python
+
+命名規則
+    ファイル
+        できるだけ短く、スネークケースを使う。
+    その他 : https://qiita.com/naomi7325/items/4eb1d2a40277361e898b
+
+文の区切り
+    ;(セミコロン)を使い文を区切る
+    num1 = 10;num2 = 8;num3 = 12
+    改行
+
+    \(バックスラッシュ)を使う
+    num = 10 + 20 + 30 + 40 + \
+    50 + 60 + 70
+
+文字列
+    文字列の記述
+        ",'のどちらを使っても良い
+
+クラス
+    # 定義
+    class Sample:
+        def __init__(self, property1):
+
+        # コンストラクタ
+        デフォルト値
+        def __init__(self, property1=30):
+
+    # 継承
+    class Child(Parent):
+
+    # 多重継承
+    言語によってはアンチパターンだがPythonでは珍しく寛容
+
+        # Mix-in
+        インスタンス変数を持たずメソッドだけを定義したクラスのこと。
+        コードの再利用を促す
+
+    フィールド
+        def __init__(self,property1)
+            self.property1 = property1
+            self.property2 = 0
+
+コレクション
+    配列
+
+    辞書
+        # 宣言
+        some_dict = {"key" : object}
+
+        # アクセス
+        some_dict["key"]

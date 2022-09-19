@@ -1,0 +1,15 @@
+要素の取得
+    driver.findElement(By.className("classname")); //classでの指定
+    driver.findElement(By.id("id")); //idでの指定
+    driver.findElement(By.xpath("xpath")); //xpathでの指定
+
+クリック
+    click()を使用
+    driver.findElement().click()
+
+Selectタグを操作する
+    List<WebElement> selects = driver.findElements(By.className("numPurchase"));
+    for(WebElement select : selects){
+        Select selecttag = new Select(select);
+        selecttag.selectByVisibleText("10");
+    }

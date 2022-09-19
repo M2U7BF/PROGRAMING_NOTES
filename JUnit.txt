@@ -1,0 +1,132 @@
+(eclipse で利用する方法)
+https://camp.trainocate.co.jp/magazine/whats-junit/
+
+(入門動画)
+https://www.youtube.com/watch?v=1q8VtH2zxYE
+
+(参考になるかもしれない intelliJ IDEA blogの記事)
+https://blog.jetbrains.com/idea/2020/09/writing-tests-with-junit-5/
+
+[文法]
+アノテーション
+    テストメソッドを宣言する
+    @Test
+
+    毎回行う初期処理を宣言
+    @Testで実行されるテストを実行する前に毎回初期処理として実行できる
+    @BeforeEach
+
+    毎回行う後処理を宣言
+    @Testで実行されるテストを実行する前に毎回後処理として実行できる
+    @AfterEach
+
+    テストクラスで1度だけする初期処理を宣言
+    @BeforeAll
+
+    テストクラスで1度だけする後処理を宣言
+    @AfterAll
+
+アサーションメソッド
+    a, bが等しいかテストする
+    assertEquals(a,b)
+        
+    aがtrueであるかテストする
+    assertTrue(a)
+    
+    aがfalseであるかテストする
+    assertFalse(a)
+        
+    aがnullであるかテストする
+    assertNull(a)
+    
+    aがnullでないようになっているかテストする
+    assetNotNull(a)
+
+
+[実践(基礎)]
+導入するための初期設定
+    Maven
+    pom.xmlに依存を記述    https://qiita.com/niwasawa/items/3702f9f086b7cb39a795
+
+        <build>
+            <plugins>
+                <!-- JUnit 5 でのテスト実行に必要なプラグインを導入 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M5</version>
+                </plugin>
+            </plugins>
+        </build>
+
+        <!--  assertEqualsなどのライブラリ  -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        import文
+        import static org.junit.jupiter.api.Assertions.assertAll;
+        import static org.junit.jupiter.api.Assertions.assertEquals;
+
+    Gradle
+    buil.gradleに記述
+
+テストメソッドを実装する
+
+    同値になるかテストする
+    assertEquals(a,b) メソッドを使用
+    bを実行した時、aと同じになるかテストする
+    assetメソッドは上から実行していき、最初に失敗したところで停止する
+
+    **実行クラス**
+    public class FizzBuzz{
+    public static void main(String[] args){
+            for(int i=0; i<100; i++){
+                System.out.println(fizzBuzz(i));
+            }
+        }
+    }
+
+    public static String fizzBuzz(int num){
+        //メソッド
+    }
+
+    **Testクラス**
+    class FizzBuzzTest(){
+        @Test
+        void fizzBuzz{
+            assertEquals("FizzBuzz",FizzBuzz.fizzBuzz(15));
+        }
+    }
+
+テストを実際に動かす
+    方法は3種類ある
+
+    IDEから行う
+        テストメソッドにて右クリック/ショートカットキー
+
+    コマンドラインから行う
+        mvn test
+        gradle test
+
+    CIサーバーから行う
+
+テスト実行を自動化する
+    CI(Continuous Integration) ･･･ テストを自動的に実行してくれる環境
+    Circle CI, GitHub Actions, TeamCity ...etc. 
+
+[実践]
+privateメソッドをテストする
+    package privateにする
+    誤用が心配な場合はコメントする
+
+webアプリケーションをテストする
+    Seleniumフレームワークを利用する
+        特定の操作をした後の、スクリーンショットを自動的に撮る

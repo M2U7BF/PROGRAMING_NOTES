@@ -1,0 +1,15 @@
+import
+    ライブラリがimportできない
+        パスが通っていない   https://open-groove.net/python/python-lib-path-env/
+            パスを確認
+            >>> import sys
+            >>> print(sys.path)
+
+            PYTHONPATHが通っていない https://monowith.com/program/python-import/
+
+            エラー出つつも動くっぽい(2022/08/05)
+
+
+TypeError: Player.player_flee() takes 0 positional arguments but 1 was given
+    参考 : https://office54.net/python/error/python-typeerror-argument
+    実はクラス内の関数を呼び出す際にselfが引数の1つ目としてクラス内関数に渡されるため、selfを受け取る記述が必要

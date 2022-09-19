@@ -1,0 +1,19 @@
+Junitのバージョンについて
+    Junit3.x
+        広く普及し始めた
+
+        Junit5との差異(Junit3の特徴)
+            アノテーションがない
+            テストクラスはTestCaseを継承する
+            テストメソッドは"test"で始めなければならない
+            テストクラス、メソッドはpublic
+
+    Junit4.x
+        アノテーションを導入した
+        
+        Junit5との差異(Junit4の特徴)
+            アノテーションがJunit5と一部違う
+            テストクラス、メソッドはpublicでなければならない(JUnit5ではpublicでなくてよい)
+            Junit5では、Hamcrest(assetThat) matcherが同梱されていない(依存関係に追加すれば利用可)
+    Junit5.x
+        ラムダ式を導入した
