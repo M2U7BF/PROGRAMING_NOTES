@@ -1,0 +1,5 @@
+brew install mysql
+
+https://qiita.com/maominionbsk54/items/321b5467ea8e2701a704
+
+mysql_secure_installation

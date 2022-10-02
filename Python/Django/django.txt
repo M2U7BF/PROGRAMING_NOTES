@@ -1,0 +1,73 @@
+# 題2回まで終了
+
+ショートカット
+    python -m venv .venv && source .venv/bin/activate &&  pip3 install django
+
+djangoインストール
+    pip3 install django
+
+仮想環境
+    作成と起動 python -m venv .venv && source .venv/bin/activate
+        .venvが名前
+    停止 deactivate
+
+    初期設定コマンド
+        python -m venv .venv && source .venv/bin/activate &&  pip3 install django
+
+テンプレート
+    {{ 変数名 }}
+    {% タグ名 %}
+    {{値 | フィルタ名}}
+
+    テンプレート読み込み
+        {% include 'hoge.html' %}
+        {% extends 'hoge.html' %}
+        {% block ブロック名 %}{% endblock %}
+
+    for文
+        {% for アイテム in リスト %}
+        {% empty %} #リストが空の場合
+        {% endfor %}
+
+    改行(\n)を反映
+        {{文字列|linebreaksbr}}
+
+View
+    viewからhtmlに変数を渡す
+        https://www.nblog09.com/w/2019/01/20/django-view-template/
+        リスト型
+            {{fruits.0}}
+        辞書型
+            context={'user':user} # contextにわたす
+            {{user.age}} # 表示。変数名.キー名
+
+サーバー
+    ssh接続
+        https://pc-karuma.net/mac-ssh-login/
+    mysql
+        root pass= z73f6vrc
+        mysqlインストール
+        pathを通す echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> ~/.bash_profile
+        反映 -> % source ~/.bash_profile
+        mysql -u root
+        停止 mysql.server stop
+        brew
+        停止　brew services stop mysql@5.7
+        起動　mysql.server start
+        エラー
+            起動しない　(https://qiita.com/_natsu_no_yuki_/items/ae4c94187093e4ab3cdc)
+
+    vi
+        編集 i
+        編集終了　esc
+    変更
+        phpAdmin ランダムな文字列　ZQaeUU2MWb7sffPqvi4qCiDm（https://qiita.com/UserKazun/items/75e48eb4c94946c8eeaf）
+            不要かもしれない設定を一部スキップ
+    postgreSQL
+        バックエンドで起動 export PGDATA=/usr/local/var/postgres
+        バックエンドで起動２ pg_ctl start
+        superuser作成 createuser -P ユーザー名
+            パスワード2回求められる
+        DB作成 createdb DB名 -O ユーザー名
+        DBにアクセス　psql -U ユーザー名 DB名
+        終了 \q

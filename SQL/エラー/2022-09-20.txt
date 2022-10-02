@@ -1,0 +1,16 @@
+
+ERROR! The server quit without updating PID file (/usr/local/var/mysql/MacBook-Pro-2.local.pid).
+
+エラー内容
+    コマンド
+        less /usr/local/var/mysql/$(uname -n).err | grep ERROR | grep 09-20
+    文
+    2022-09-20T03:16:47.429164Z 1 [ERROR] [MY-012930] [InnoDB] Plugin initialization aborted with error Generic error.
+    2022-09-20T03:16:47.429813Z 1 [ERROR] [MY-011013] [Server] Failed to initialize DD Storage Engine.
+    2022-09-20T03:16:47.430153Z 0 [ERROR] [MY-010020] [Server] Data Dictionary initialization failed.
+    2022-09-20T03:16:47.430189Z 0 [ERROR] [MY-010119] [Server] Aborting
+
+コマンド
+    ps aux | grep mysql
+文
+    zuyaka            8240   0.0  0.0 34132060    892 s000  S+   12:20PM   0:00.00 grep mysql

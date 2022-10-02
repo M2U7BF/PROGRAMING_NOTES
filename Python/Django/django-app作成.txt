@@ -1,0 +1,68 @@
+初期設定
+    # if "django" not in
+プロジェクトの作成
+    django-admin startproject プロジェクト名
+
+サーバー起動
+    python manage.py runserver
+
+開発用設定
+    setting.py
+        ALLOWED_HOSTS = ["*"]  #とする。
+        セキュリティは一旦無視して全てのアクセスを許可
+
+フォルダについて
+    manage.py
+        開発用コマンドが用意されている
+    setting.py
+        全体設定を管理
+    urls.py
+        urlを設定
+
+アプリ
+    django特有の考え方。
+    アプリを最低1つ作る。
+    機能の単位。
+
+    アプリを作る
+        python manage.py startapp アプリ名
+        (setting.pyのINSTALEDAPPSに追加)
+
+htmlソースの作成
+    app名/templates を作成
+
+View
+    ユーザーの入力を受け取って、レスポンスを返す
+
+    Viewの作成
+        views.py
+
+urlマッピング
+    urls.pyでビューとURLを結びつける
+    ①アプリ側のurls.pyに記述
+    ②全体設定のurls.pyに記述
+
+    path('') # 何も書かなければトップ
+
+全体urlにアプリのurlをinclude
+アプリのurls.pyでviewを読み込み
+viewを製作
+
+
+(https://techacademy.jp/magazine/6235)
+アップロードしたい内容を含むディレクトリに移動し
+    git init
+git add .
+git status
+git commit -m "add new file"
+git remote add origin (gitリポジトリのURL)
+
+ローカルの変更をgitに反映
+    git add -A
+    git commit -m "modified"
+    git remote add origin URLを記入
+    git push origin master
+
+    ローカルリポジトリをプッシュしてリモートリポジトリへ反映させる（git push）
+    ローカルリポジトリの変更を、GitHub上にあるリモートリポジトリに反映させるため、以下のコマンドを実行します。
+    git push origin master

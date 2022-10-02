@@ -2,6 +2,8 @@
     ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
     解決 : mysql.server start
 
+     ERROR! The server quit without updating PID file (/usr/local/var/mysql/MacBook-Pro-2.local.pid).
+
 起動
     mysql.server start
 
@@ -22,7 +24,7 @@ MySQLコマンドを立ち上げる
         show dataases;
 
     dbを選択する
-        use DB名;    
+        use DB名;
 
     テーブルの一覧
         show tables;

@@ -1,6 +1,7 @@
 動画ダウンロード
 youtube-dl --no-check-certificate \
-"https://www.youtube.com/watch?list=PL9fB8597PK2tmb3nF2aUP272U92OcDAaY&v=IIKc9_tuupY"
+-o '$HOME/Downloads/%(title)s.%(ext)s' \
+""
 
 youtube-dl YouTubeの動画URL -x
 
@@ -8,9 +9,12 @@ mp3ダウンロード
 youtube-dl --no-check-certificate \
 動画URL -x --audio-format mp3
 
+キャッシュを消す
+    youtube-dl --rm-cache-dir
+
 おまけ
     成功に関わらず連続実行
         コマンド1 ; コマンド2　
 
     並列実行
-        コマンド1 & コマンド2
+        コマンド1 & コマンド2。

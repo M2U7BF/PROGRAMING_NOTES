@@ -43,6 +43,15 @@ https://www.javadrive.jp/python/
             self.property1 = property1
             self.property2 = 0
 
+    # 初期化
+    変数名 = クラス名(引数)
+
+    # クラス変数
+    クラス変数への参照
+    @classmethod
+    def method(cls): # 自クラスを示す時、慣習でclsと書く
+        cls.val
+
 コレクション
     配列
 

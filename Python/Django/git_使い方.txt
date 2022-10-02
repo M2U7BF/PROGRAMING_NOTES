@@ -1,0 +1,13 @@
+セーブファイルを作る
+    git init
+
+セーブ
+    commit
+
+ロード(セーブせずにある地点まで戻す)
+    (https://qiita.com/Yorinton/items/e0e969d961b17a359e19)
+
+    git log //戻す対象のハッシュ値を調べる
+    commit ************************
+
+    git reset --hard ハッシュ値
