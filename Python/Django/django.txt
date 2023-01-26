@@ -32,6 +32,21 @@ djangoインストール
     改行(\n)を反映
         {{文字列|linebreaksbr}}
 
+ルーティング
+    djangoが用意しているテンプレートを使う場合
+        ```
+        from django.urls import path
+        from .views import *
+
+        urlpatterns = [
+            path('', IndexView.as_view(), name="index"),
+            path('about', AboutView.as_view()),
+        ]
+        ```
+
+    細かい方法 - 関数を自作
+
+
 View
     viewからhtmlに変数を渡す
         https://www.nblog09.com/w/2019/01/20/django-view-template/

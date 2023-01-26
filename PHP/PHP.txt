@@ -21,12 +21,27 @@ PHPとは
 		閉じカッコ } は内容を記述した次の行に記述する。
 		開きカッコの後、閉じカッコの前にスペースは記述しない。
 
+型
+	int integer
+	bool boolean
+	float double real
+	string
+	array
+	object
+	unset
+
 宣言
+	定数
+		const HOGE = '';
 	変数
 		$変数名 = 値;
 
 		表記
-		$userName
+			$userName
+
+		キャスト
+			$x = "12000"
+			$z = (boolean)$x; //$xが存在すればtrue
 
 	配列
 		$fruits = array('peach', 'banana','grape'); //arrayを使った方法

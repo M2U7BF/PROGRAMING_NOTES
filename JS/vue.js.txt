@@ -1,0 +1,56 @@
+Options API
+Vue.js
+    コンポーネント指向に重きを置いたUIライブラリ
+
+コンポーネント Component
+    UIコンポーネント
+        一般的なWeb開発におけるUI部品のこと
+        UIコンポーネントをどれだけ効率的に書けるかが鍵となる
+        再利用を容易にする
+
+    カスタムタグ
+
+    ローカルコンポーネント
+    グローバルコンポーネント
+
+    親子関係
+
+    命名規則
+        ケバブケースが推奨される
+        ```
+        same-hoge-component
+        ```
+
+    定義する
+        カスタムタグ方式
+            Vue.component()を使う。
+            ```
+            // options には data, methods など渡す
+            Vue.component(tagName, options)
+            ```
+        サブコンストラクタ方式
+            Vue.extend()を使う。
+                Vue.extend()とは
+                    グローバルなAPI
+                    ベースのVueコンストラクタを継承した、サブクラスコンストラクタを作成できます。
+            $mount関数
+                定義したものを直接特定の要素にマウントする
+
+dataプロパティ
+    アプリケーションの様々なデータを管理・操作することができます（リアクティブな変数を定義することができます）。
+    https://www.webdesignleaves.com/pr/plugins/vue-basic-01.html#:~:text=Options%20API%20%E3%81%A7%E3%81%AF%E3%80%81data%E3%80%81methods,%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AA%E3%81%A9%E3%81%A8%E5%91%BC%E3%81%B3%E3%81%BE%E3%81%99%E3%80%82
+
+    ここでreturnした値をtemplateで読み込める
+
+props
+    親コンポーネントから子コンポーネントに対してデータを渡す
+
+v-model
+    双方向データバインディングを行う
+    <input type="text" v-model="phoneNumber" name="phone_number" />
+    と記載すると、phoneNumberという変数とテキストボックスに入力した値を同期してくれます。
+
+
+Q
+async function という記述はなんだろ??
+    非同期処理行っているっぽい!!!!

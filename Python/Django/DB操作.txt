@@ -1,0 +1,45 @@
+立ち上げ
+    python manage.py migrate
+
+    ログインユーザーの作成
+        python manage.py createsuperuser
+
+マイグレーション
+    models.pyを元にテーブルを作成するマイグレーションファイルを生成する
+        python manage.py makemigrations
+    マイグレーション
+        python manage.py migrate
+
+事前データの用意
+    fixture を使用
+        python manage.py loaddata fixture2.json
+
+        ```
+        {
+            "model": "website.emotionrecords",
+            "pk": 1,
+            "fields": {
+                "emotion": 1,
+                "emotion_cause": "テストデータ~テストデータ~テストデータ~テストデータ~テストデータ~",
+                "entered_at": "2018-10-31T00:23:18.934Z"
+            }
+        }
+        ```
+
+データの新規登録
+    インスタンスを生成する方法
+        ```
+        obj = NippoModel(title=値, content=値)
+        obj.save()
+        ```
+    直接保存する方法
+        ```
+        モデルインスタンス.objects.create(フィールド名=値、、、)
+        ```
+
+データの取得
+    objects.all()
+        ```
+        qs = NippoModel.objects.all()
+        ```
+    objects.get(pk=xx)

@@ -1,0 +1,2 @@
+updateでバージョンの違いを無視したい
+    composer update --ignore-platform-reqs

@@ -1,0 +1,10 @@
+ルーティング
+    Route::get(
+        '/folders/{id}/tasks', //リクエストパス指定
+        'TaskController@index') //TaskControllerのindexメソッドを呼び出す
+        ->name('tasks.index'); //
+
+Controller
+    作成
+        php artisan make:controller TaskController //雛形で作成する
+        

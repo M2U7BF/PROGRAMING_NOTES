@@ -1,0 +1,6 @@
+マイグレーション
+    マイグレーションファイルの作成
+        記述
+            メソッドについて : https://laravel.com/docs/9.x/migrations
+    マイグレート
+        php artisan migrate
