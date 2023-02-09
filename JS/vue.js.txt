@@ -46,6 +46,9 @@ Vue.js
         ここでreturnした値をtemplateで読み込める
 
     props
+computedプロパティ
+
+propsプロパティ
     親コンポーネントから子コンポーネントに対してデータを渡す
 
     propsの初期値
@@ -171,6 +174,13 @@ htmlの文字列を置換する
 レスポンシブ対応
     v-flex
     12点グリッド
+● 関数を共通化させる
+    https://programmer-note.hatenablog.com/entry/2021/09/26/175427
+
+● 画面間でデータを受け渡す
+    propsを経由する
+    https://footprints.link/articles/ja/n-machida/pass-variables-via-props-when-routing-in-vue-js
+
 
 Q
 async function という記述はなんだろ??
