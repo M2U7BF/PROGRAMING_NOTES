@@ -1,0 +1,92 @@
+vmへssh接続
+    設定
+        ネットワークアダプターでnatを設定。
+        ポートフォワーディング
+            サービス名 : ssh
+            ホストIP : 空欄
+            ホストポート : 任意(2222等)
+            ゲストIP : 空欄
+            ゲストポート : 22(sshサービスのデフォルト)
+            で設定
+        ssh 接続
+            ssh -p 2222 root@localhost
+
+    2023-02-05 の環境構築
+        http 8083
+        ssh 2222
+
+        ↓ こちらでセキュリティを解除するのがよいみたい
+        https://qiita.com/take-ookubo/items/930f2619268c15c4e6b2
+
+
+        24  yum check-update && yum install -y httpd
+        25  yum install httpd
+        26  service httpd start
+        27  echo "test" > /var/www/html/index.html
+        28  service httpd status
+
+        自動起動設定
+        45  systemctl enable httpd.service
+        32  service apache2 start
+
+        33  shutdown -r nown
+        34  shutdown -r now
+
+        ファイヤーウォール等設定
+        35  systemctl stop firewalld
+        36  systemctl disable firewalld
+        37  SELINUX=disabled
+        38  vi /etc/sysctl.d/disable_ipv6.conf
+        39  nmcli device status
+        40  nmcli con mod enp0s3 connection.autoconnect "yes"
+        41  systemctl restart NetworkManager
+        42  systemctl restart network
+        43  shutdown -r now
+
+
+        44  service httpd status
+        46  shutdown -r now
+
+
+        http 8086
+        ssh 2244
+
+        ● dockerインストール
+        61  sudo yum install -y yum-utils
+        62  sudo yum-config-manager     --add-repo     https://download.docker.com/linux/centos/docker-ce.repo
+        63  sudo yum install docker-ce docker-ce-cli containerd.io
+        64   docker --version
+        65  docker version 20.10.3. build 48d30b5
+        66   docker --version
+        67  docker version 20.10.3. build 48d30b5
+        68  sudo yum install docker-ce docker-ce-cli containerd.io
+        69  docker --version
+        70  sudo systemctl start docker
+        71  sudo systemctl status docker
+        72  sudo systemctl enable docker
+        73  sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        74  sudo chmod +x /usr/local/bin/docker-compose
+        75  docker-compose --vesrion
+        76  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+        77  docker-compose --vesrion
+        78  sudo docker run hello-world
+        79  sudo docker ps -a
+        80   sudo docker stop de961aa6207b
+        81  sudo docker rm de961aa6207b
+
+        85   systemctl disable httpd
+        86  systemctl status httpd
+        87  systemctl stop httpd
+        88  systemctl status httpd
+        89  docker-compose up -d
+        90  docker ps
+
+        起動 + localhostアクセス
+
+    ディスク容量の拡張
+        https://qiita.com/yasushi-jp/items/a887b11f2090c38e3e95
+
+catをtxtに出力
+    ```
+    cat hoge > hoge.txt
+    ```

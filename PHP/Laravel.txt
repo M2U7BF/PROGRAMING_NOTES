@@ -1,3 +1,10 @@
+環境構築
+    vagrant, homestead,
+        https://qiita.com/7968/items/68b3566d92d2b007038e
+        2023-02-05 試みるも動かない
+    dockerの利用
+        https://simablog.net/docker-laravel-nginx-mysql/
+
 ルーティング
     Route::get(
         '/folders/{id}/tasks', //リクエストパス指定
@@ -7,4 +14,3 @@
 Controller
     作成
         php artisan make:controller TaskController //雛形で作成する
-        

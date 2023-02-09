@@ -1,0 +1,12 @@
+working_dir
+    コンテナに入った時に、このディレクトリから作業をすることができる
+
+depends_on
+    コンテナを立ち上げる順番
+
+docker-compose立ち上げ
+    docker-compose up -d --build
+        -dはデタッチド・モード
+
+dockerコンテナへファイルを転送
+    https://qiita.com/gologo13/items/7e4e404af80377b48fd5

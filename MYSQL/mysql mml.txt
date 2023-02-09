@@ -1,0 +1,5 @@
+デフォルト値をinsertしたい
+    defaultと記述
+    ```
+    insert into food (name) values (default) ;
+    ```

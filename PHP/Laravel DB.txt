@@ -4,3 +4,51 @@
             メソッドについて : https://laravel.com/docs/9.x/migrations
     マイグレート
         php artisan migrate
+
+        ファイル指定のマイグレーション
+        php artisan migrate:refresh  --step=1 --path=/database/migrations/ファイル名
+        ```
+        php artisan migrate:refresh  --step=1 --path=/database/migrations/2023_01_16_050524_create_styles_table.php
+        ```
+
+シーダー
+    https://codelikes.com/laravel-seeder/
+    作成
+        ```
+        php artisan make:seeder FruitSeeder
+        ```
+
+    実行
+        関数を定義して実行
+            復数のSeederを連続して実行できる。
+            ```
+            php artisan db:seed
+            ```
+
+            省略したカラムの扱い
+                デフォルト値で登録
+
+            PKカラムの扱い
+                PKカラムはAuto increment の場合、省略できる。
+                'id' => '1' など。
+
+            繰り返し実行
+                ```
+                while true; do php artisan db:seed; sleep 1; clear; done;
+                ```
+
+        ファイル指定
+            ```
+            php artisan db:seed --class FruitSeeder
+            ```
+
+    ダンプしたSQLファイルを読み込む
+        ```
+        public function run(): void
+        {
+            $path = __DIR__ . '/sql/dump-data.sql';
+            \DB::unprepared(file_get_contents($path));
+        }
+
+        https://kojirooooocks.hatenablog.com/entry/2022/11/03/010835
+        ```

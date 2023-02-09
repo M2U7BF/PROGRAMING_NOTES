@@ -1,3 +1,5 @@
+チュートリアルまとめ : https://hackmd.io/@yto60/SJ5qzYTFI
+
 Options API
 Vue.js
     コンポーネント指向に重きを置いたUIライブラリ
@@ -36,21 +38,145 @@ Vue.js
             $mount関数
                 定義したものを直接特定の要素にマウントする
 
-dataプロパティ
-    アプリケーションの様々なデータを管理・操作することができます（リアクティブな変数を定義することができます）。
-    https://www.webdesignleaves.com/pr/plugins/vue-basic-01.html#:~:text=Options%20API%20%E3%81%A7%E3%81%AF%E3%80%81data%E3%80%81methods,%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AA%E3%81%A9%E3%81%A8%E5%91%BC%E3%81%B3%E3%81%BE%E3%81%99%E3%80%82
+プロパティ  ((オプション)オプションオブジェクト)
+    dataプロパティ
+        アプリケーションの様々なデータを管理・操作することができます（リアクティブな変数を定義することができます）。
+        https://www.webdesignleaves.com/pr/plugins/vue-basic-01.html#:~:text=Options%20API%20%E3%81%A7%E3%81%AF%E3%80%81data%E3%80%81methods,%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AA%E3%81%A9%E3%81%A8%E5%91%BC%E3%81%B3%E3%81%BE%E3%81%99%E3%80%82
 
-    ここでreturnした値をtemplateで読み込める
+        ここでreturnした値をtemplateで読み込める
 
-props
+    props
     親コンポーネントから子コンポーネントに対してデータを渡す
 
-v-model
-    双方向データバインディングを行う
-    <input type="text" v-model="phoneNumber" name="phone_number" />
-    と記載すると、phoneNumberという変数とテキストボックスに入力した値を同期してくれます。
+    propsの初期値
+        default関数で定義する必要がある。
+        ```
+        propE: {
+            type: Object,
 
+            default: function () {
+                return { message: 'hello' }
+            }
+        },
+        ```
+        https://jp.vuejs.org/v2/guide/components-props.html#%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
+    propsとdataの連携
+        特別な理由がない限り、dataへpropsを代入/コピーすべき場面はありません。代わりにcomputedを使うようにしましょう。
+        https://ics.media/entry/200716/
+
+    computed
+        算出プロパティ
+        あるデータから派生するデータをプロパティとして公開する仕組み
+
+        computedで定義したプロパティは、データと同様にテンプレートで展開することが可能です。
+
+
+ディレクティブ
+    v-if v-show
+        条件つきレンダリング
+
+    v-for
+        リストレンダリング
+        繰り返し処理
+
+        v-bind属性
+            ```
+            v-bind:key="item.id"
+            ```
+            key変数。配列の中の何番目を表示しているのか把握する。
+
+    v-bind
+        バインディング
+
+    v-on
+        イベント処理
+
+    v-model
+        フォーム入力
+
+ライフサイクルフック
+
+formを利用する
+    バリデーション
+        v-modelの使用
+        https://qiita.com/yasushi-jp/items/a887b11f2090c38e3e95
+
+    v-model
+        フォーム入力バインディング
+
+        v-bindとv-onをまとめて書くための糖衣構文
+            https://qiita.com/punkshiraishi/items/6f72389fa23b0820a72a
+        双方向データバインディングを行う
+        <input type="text" v-model="phoneNumber" name="phone_number" />
+        と記載すると、phoneNumberという変数とテキストボックスに入力した値を同期してくれます。
+
+DB実装
+    //
+
+状態管理
+    データフローとは
+        アプリケーションが持つデータの流れ。
+        どこにデータを保持し、データを読み込む時や更新する時はどこからどのように行うのかという点を表
+        すことが多いです。大規模な状態管理を行う際はデータフローの設計の良し悪しで実装の複雑さや難易
+        度が大きく変わります。
+
+        Flux
+            Facebookが提唱しているデータフロー設計
+            http://facebook.github.io/flux/docs/in-depth-overview
+
+    イベントの感知
+        v-on
+            イベントの種類
+            ```
+            v-on: input="hoge"
+            v-on: onclick ="hoge"
+            v-on: mouseover ="huge"
+            ```
+
+イベント変数
+    ```
+    $event
+    引用 : https://jp.vuejs.org/v2/guide/events.html#%E3%82%A4%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%83[…]3%83%83%E3%83%89%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A9
+    ```
+
+    class名取得
+        ```
+        event.target.className
+        引用 : https://cpoint-lab.co.jp/article/201803/1958/
+        ```
+
+非同期処理
+    async
+        非同期処理が発生する関数にasyncをつける
+
+    await
+        その関数内で、処理を待たなければならない部分にawaitをつける
+    https://rara-world.com/es2017-async-await/
+
+htmlの文字列を置換する
+    v-text
+        ```
+        <p v-text="error-message"></p>
+        ```
+
+    {{}}
+        ```
+        <p>{{ error-message }}</p>
+        ```
+
+共通関数の定義
+    ミックスイン
+
+レスポンシブ対応
+    v-flex
+    12点グリッド
 
 Q
 async function という記述はなんだろ??
     非同期処理行っているっぽい!!!!
+
+Q
+{{}} ← これは何という
+A
+Mustache(ムスタッシュ、口ひげ)

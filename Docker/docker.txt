@@ -1,0 +1,13 @@
+OS間ファイル転送
+    コンテナからホストへのコピー
+    ```
+    sudo docker cp <コンテナID>:/etc/my.cnf my.cnf
+
+    引用 : https://qiita.com/gologo13/items/7e4e404af80377b48fd5
+    ```
+    ホストからコンテナへのコピー
+    ```
+    sudo docker cp my.cnf <コンテナID>:/etc/my.cnf
+
+    引用 : https://qiita.com/gologo13/items/7e4e404af80377b48fd5
+    ```
