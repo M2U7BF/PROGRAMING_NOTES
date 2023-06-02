@@ -10,3 +10,5 @@ docker-compose立ち上げ
 
 dockerコンテナへファイルを転送
     https://qiita.com/gologo13/items/7e4e404af80377b48fd5
+
+docker-compose build --no-cache

@@ -32,3 +32,9 @@ remoteリポジトリを変更する
     git remote -v
     2. 新しいものに設定
     git remote set-url origin コピーしたurl
+
+ブランチ取得
+    git fetch origin ブランチ名
+
+    全部ブランチをリモートからプル
+        https://qiita.com/muraikenta/items/e590a380191971f9c4c3

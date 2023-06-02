@@ -1,0 +1,3 @@
+セル結合
+    option + control + O
+

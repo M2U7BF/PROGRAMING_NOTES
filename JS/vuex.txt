@@ -1,0 +1,15 @@
+https://qiita.com/nmgw1119/items/27ed23e433ec54a9c950
+
+storeの定義
+    state
+        Store で管理するデータ項目の定義
+
+    getters
+        state 内のデータの状態から算出される値（≒算出プロパティ）
+
+    mutations
+        state のデータを直接操作するための関数（非同期処理は定義不可）
+
+    actions
+        mutations の操作を各コンポーネントから呼び出すために使用する関数（非同期処理を定義可）
+    

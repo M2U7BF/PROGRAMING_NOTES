@@ -7,17 +7,70 @@
 起動
     mysql.server start
 
+    MySQLコマンドを立ち上げる
+        パスワード未設定時(初期)
+            ```
+            mysql -u root
+            ```
+        パスワード設定後
+            ```
+            mysql -u root -p
+            ```
+
 プレースホルダ
     SQL文の中の「変動する箇所」に使用するもの
     SQLインジェクション攻撃を防げる
     :に続けてプレースホルダーの代替文字列を記述。カラム名と同じにすることが多い。
     sql = "SELECT * FROM user WHERE name=:name";
 
-MySQLコマンドを立ち上げる
-    パスワード未設定時(初期)
-        mysql -u root
-    パスワード設定後
-        mysql -u root -p
+属性の選択
+    formのチェックボックス@
+
+        フォームが送信されたとき、サーバーサイドのプログラムでフォームデータを処理します。例えば、PHPであれば、$_POSTスーパーグローバル変数を使用してフォームデータにアクセスできます。
+        チェックボックスの値を処理し、MySQLクエリを使用してデータベースに保存します。チェックボックスの値は、配列として$_POST変数に保存されるため、implode()関数を使用して配列を文字列に変換する必要があります。例えば、以下のように記述します。
+
+        ```
+        // フォームデータを取得する
+        $interests = $_POST['interests'];
+
+        // 配列をカンマ区切りの文字列に変換する
+        $interests_string = implode(',', $interests);
+
+        // MySQLに接続する
+        $mysqli = new mysqli("localhost", "username", "password", "database_name");
+
+        // クエリを実行する
+        $sql = "INSERT INTO user_interests (interests) VALUES ('$interests_string')";
+        $result = $mysqli->query($sql);
+
+        // エラーを処理する
+        if (!$result) {
+            echo "Error: " . $mysqli->error;
+        }
+        ```
+
+        この例では、user_interestsテーブルにinterestsカラムを持ち、カンマ区切りのチェックボックスの値を保存しています。必要に応じて、データベース接続情報を変更し、テーブル構造を適切に調整してください。また、セキュリティ上の理由から、MySQLクエリのパラメーターをエスケープするなど、適切な入力検証やサニタイズを実行する必要があります。
+
+    jsonカラム
+
+日本語入力できない
+    ```
+     export LC_ALL=en_US.UTF-8
+    ```
+
+    my.iniの[mysqld]
+    ```
+    character_set_server=utf8
+    ↓
+    character_set_server=utf8mb4
+    ```
+    ↓
+    MySQLを再起動
+
+    yum install systemd -y
+    yum install sudo -y
+    ↓
+    ローカルのmysqlを使用することに
 
 コマンド操作
     db一覧
@@ -29,11 +82,40 @@ MySQLコマンドを立ち上げる
     テーブルの一覧
         show tables;
 
-    userの追加
-        CREATE USER 'ユーザ名'@'ホスト名' IDENTIFIED BY 'パスワード';
-            ホスト名はlocalhostも可
-    userを削除
-        DROP USER 'user'@'localhost';
+    カラム追加
+        ```
+        ALTER TABLE styles ADD is_for_each_foreigners boolean NOT NULL;
+        ```
+
+        順序操作
+            AFTER カラム名
+
+    user操作
+        userの追加
+            CREATE USER 'ユーザ名'@'ホスト名' IDENTIFIED BY 'パスワード';
+                ホスト名はlocalhostも可
+        userを削除
+            DROP USER 'user'@'localhost';
+
+    dbデータの移行
+        dbデータを出力
+            ```
+            mysqldump -u user_name -p from_db > from_db.dump.sql
+
+            引用 : https://weblabo.oscasierra.net/mysql-database-copy/
+            ```
+
+            テーブル単位
+                ```
+                mysqldump -u root -p jjstestrev foreigners --master-data --single-transaction > foreigners230222.dump
+                ```
+
+        dbデータ取り込み
+            ```
+            mysql -u user_name -p dest_db < from_db.dump.sql
+
+            引用 : https://weblabo.oscasierra.net/mysql-database-copy/
+            ```
 
 sql文
     外部キーの記述

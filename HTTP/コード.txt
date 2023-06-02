@@ -1,0 +1,10 @@
+400
+    Not Found
+
+422
+    バリデーションエラーなどに使用
+    https://kinsta.com/jp/knowledgebase/http-422/
+
+500
+    Server Error
+

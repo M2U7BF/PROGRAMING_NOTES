@@ -3,3 +3,13 @@ brew install mysql
 https://qiita.com/maominionbsk54/items/321b5467ea8e2701a704
 
 mysql_secure_installation
+
+
+brew services stop mysql
+brew services start mysql
+mysql -u root -p
+mysql -uroot
+mysql -u root
+mysql -u root
+mysqld_safe --skip-grant-tables &
+mysql -u root

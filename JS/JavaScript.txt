@@ -1,5 +1,31 @@
+連想配列
+    ```
+    let dict = {name: "hoge"};
+    // ドットでアクセスできる
+    console.log(dict.name);
+
+    https://code-database.com/knowledges/32
+    ```
+
+復数文字列の表記
+    テンプレートリテラル
+    インラインで表記できる。
+    https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Template_literals
+    ```
+    `文字列`
+
+    `おはよう
+    ございます`
+
+    ```
+
 コンソールの出力
     様々なメソッド : https://qiita.com/baby-degu/items/1046763163bc794870ea
+
+    オブジェクト
+        ```
+        console.log(JSON.stringify(hoge-obj, null, インデントスペース数));
+        ```
 
 イベントに反応する
     無名クラスを利用した表記

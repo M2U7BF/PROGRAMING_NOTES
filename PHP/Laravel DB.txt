@@ -1,7 +1,16 @@
 マイグレーション
     マイグレーションファイルの作成
+        ```
+        php artisan make:migration create_folders_table --create=folders
+        ```
+        ```
+        php artisan make:migration add_user_id_to_posts_table --table=posts
+        ```
         記述
             メソッドについて : https://laravel.com/docs/9.x/migrations
+
+            順序操作
+                ->after('カラム名')
     マイグレート
         php artisan migrate
 

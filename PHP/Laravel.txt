@@ -2,8 +2,19 @@
     vagrant, homestead,
         https://qiita.com/7968/items/68b3566d92d2b007038e
         2023-02-05 試みるも動かない
+
     dockerの利用
         https://simablog.net/docker-laravel-nginx-mysql/
+
+    artisanのインストール
+        ```
+        composer install
+        ```
+
+    暗号鍵の生成
+        ```
+        php artisan key:generate
+        ```
 
 ルーティング
     Route::get(
@@ -11,6 +22,48 @@
         'TaskController@index') //TaskControllerのindexメソッドを呼び出す
         ->name('tasks.index'); //
 
+ミドルウェア
+    ミドルウェアは、Webアプリケーションに送信されたリクエストを受け取った直後に実行される「フィルター」のようなもので、リクエストに対して必要な処理を行い、それを正しい方向に導く役割を担っています。
+    具体的には、ログイン機能があるWebアプリケーションでは、アクセスしたユーザーがログインしているかどうかをチェックするためのミドルウェアを定義することができます。
+
 Controller
     作成
         php artisan make:controller TaskController //雛形で作成する
+
+DB操作
+    追加･更新
+        save()
+        ```
+        $flight = new Flight;
+
+        $flight->name = $request->name;
+
+        $flight->save();
+        ```
+
+    新規作成
+        create()
+
+アロー演算子 (->)
+    左辺から右辺を取り出す演算子
+    オブジェクトからプロパティやメソッドを呼び出すときに使う。
+    矢印「->」の後に続けるプロパティ名は「$」を付与せずに書く
+    ```
+    class fruit {
+        $apple = "りんご"
+        $melon = "メロン"
+    }
+
+    fruit->$apple //りんご
+    ```
+
+ダブルアロー演算子 (=>)
+    連想配列でKey（キー）に対してValue（値）を指定するときに使う。
+    ```
+    $arr = [
+        'key1' => 'val1',
+        'key2' => 'val2',
+    ];
+
+    echo $arr['key1'];
+    ```
