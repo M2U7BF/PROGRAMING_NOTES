@@ -1,0 +1,4 @@
+出力
+    配列
+        Arrays.toString(arr1)
+        Arrays.deepToString(week)

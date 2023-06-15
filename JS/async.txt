@@ -1,0 +1,5 @@
+for文
+    for await (const pdf of pdfFiles){
+        await hoge = 
+    }
+
