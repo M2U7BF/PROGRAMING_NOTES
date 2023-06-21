@@ -16,6 +16,11 @@
         php artisan key:generate
         ```
 
+クラス構造
+    参考
+        https://github.com/Kovah/LinkAce/tree/main
+        https://github.com/slimkit/plus/tree/2.4
+
 ルーティング
     Route::get(
         '/folders/{id}/tasks', //リクエストパス指定
@@ -42,7 +47,15 @@ Requestクラス
         Requestクラスはコントローラーにリクエストデータを提供し、コントローラーはそれを使用してアプリケーションの動作を制御します。
     [役割]
         入力データの取得、バリデーション、ファイルのアップロードなど、リクエスト処理に関連するタスクを簡素化するために使用されます。
-    []
+    [操作]
+        作成
+            php artisan make:request　<class名>
+
+            パス
+                Auth/LoginRequest.php
+
+        命名例
+            https://github.com/Bottelet/DaybydayCRM/tree/master
 
 DB操作
     追加･更新
