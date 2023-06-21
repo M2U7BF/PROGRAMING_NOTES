@@ -56,6 +56,17 @@ Requestクラス
 
         命名例
             https://github.com/Bottelet/DaybydayCRM/tree/master
+    [解説]
+        Requestsクラスには2つのメソッドがある。
+            authorize()
+                リクエストが認可されているかどうかを判定するためのメソッド
+
+            rules()
+                リクエストのバリデーションルールを定義するためのメソッド
+                バリエーションルールを指定します。
+                参考 : https://www.tairaengineer-note.com/laravel-formrequest-validation-rule/
+
+            参考 : https://www.tairaengineer-note.com/laravel-api-validation-to-request/
 
 DB操作
     追加･更新
