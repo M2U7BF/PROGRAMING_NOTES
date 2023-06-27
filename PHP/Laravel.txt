@@ -67,3 +67,7 @@ DB操作
 
     echo $arr['key1'];
     ```
+
+テスト
+    高速化
+        https://r-tech14.com/laravel-test-speedy/

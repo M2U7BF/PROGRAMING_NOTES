@@ -27,6 +27,17 @@
 ある時点のcommitに戻す
     git reset --hard ハッシュ値
 
+ファイルの変更を取り消す
+    ```
+    git chekout -- <ファイル名>
+    git chekout -- <ディレクトリ名>
+    ```
+
+    すべての変更を取り消す
+    ```
+    git chekout -- .
+    ```
+
 remoteリポジトリを変更する
     1. 現状のremoteリポジトリを確認
     git remote -v
@@ -43,3 +54,6 @@ remoteリポジトリを変更する
         $ git pull --all
         ```
         https://qiita.com/muraikenta/items/e590a380191971f9c4c3
+
+自動PULL
+    https://qiita.com/mkzyk/items/f6fb42bfee757d8245de
