@@ -24,6 +24,13 @@
     git push アクセス先 ブランチ名
     git push origin master
 
+stash
+    stash登録
+        git stash save "メッセージ"
+
+    最新のstashを反映
+        git stash pop
+
 ある時点のcommitに戻す
     git reset --hard ハッシュ値
 

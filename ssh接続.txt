@@ -1,0 +1,14 @@
+手順
+https://eng-entrance.com/linux-ssh-key
+
+    暗号鍵生成
+    公開鍵生成
+    公開鍵を送信
+    公開鍵をauthorized_keysに入れる
+    .ssh/configを編集
+    ssh接続をテスト
+
+scp
+    ```
+    scp -P <ポート> <元パス> <先パス>
+    ```
