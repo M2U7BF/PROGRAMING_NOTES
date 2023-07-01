@@ -1,6 +1,23 @@
 (https://gist.github.com/kenta-polyglot/bc0657525f37cd50c9f9399a4f86b04a)
 詳しくて役立つ : https://qiita.com/opengl-8080/items/eb3bf3b5301bae398cc2
 
+クラス構造
+	参考リポジトリ
+		大規模システム
+			https://github.com/macrozheng/mall
+		spring bootの各機能をまとめたリポジトリ
+			https://github.com/xkcoding/spring-boot-demo
+		その他
+			https://github.com/elunez/eladmin
+
+https://github.com/linlinjava/litemall/tree/master/litemall-vue
+https://github.com/YunaiV/ruoyi-vue-pro
+https://github.com/yudaocode/SpringBoot-Labs
+https://github.com/shuzheng/zheng
+https://github.com/doocs/source-code-hunter
+https://github.com/seaswalker/spring-analysis
+
+
 Springの構造
 	実態はコンテナでありBeanのfactoryとして動作する
 
@@ -66,7 +83,7 @@ Spring devtools
 		application.propertiesに追記
 
 MVC
-	Cntroller
+	Controller
 		@Controllerを使い登録する
 		クライアントからの入力を View から受け取り、それをもとに Model に指示を伝えます。
 		その後、Model から受け取った値を View に伝え、見た目に反映させます。
@@ -108,9 +125,11 @@ Spring MVC
 		リクエストハンドラはURLリクエストと関連づけられる
 
 		@RequestMapping("/urlパス")
-
-		@RequestMapping("/issues")
-		public class IssueController { ...
+			```
+			@RequestMapping("/issues")
+			public class IssueController { ...
+			```
+			classにつけることが多いのだろうか。
 
 		@GetMapping("/urlパス") //最初の/は省略できます
 		@GetMapping(value = { "urlパス1", "urlパス2" }) //複数のurlパスを指定できます

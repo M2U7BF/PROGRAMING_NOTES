@@ -20,6 +20,13 @@
         php artisan migrate:refresh  --step=1 --path=/database/migrations/2023_01_16_050524_create_styles_table.php
         ```
 
+    削除
+        $table->dropColumn(['answer']);
+        $table->dropForeign(['style_id']);
+            配列はあくまで名前を結合するもので、foreign key制約を複数指定できるわけではない。
+        $table->dropTimestamps();
+        $table->dropSoftDeletes();
+
 シーダー
     https://codelikes.com/laravel-seeder/
     作成
@@ -60,4 +67,14 @@
         }
 
         https://kojirooooocks.hatenablog.com/entry/2022/11/03/010835
+        ```]
+
+型
+    PK
+        $table->id();
+        bigIncrement()
+    外部キー
+        unsignedBigInteger
+        ```
+        company_id は
         ```
