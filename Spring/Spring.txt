@@ -137,6 +137,10 @@ Spring MVC
 		@GetMapping("/creationForm")
 		public String showCreationForm(@ModelAttribute IssueForm form) { ...
 
+		htmlを表示する
+			Controllerメソッドでhtml名をreturnする。
+			拡張子(.html)はつけなくてよい。
+
 		ControllerクラスでURLリクエストパラメータをつける
 		ControllerでURL式はREST形式で受け取る(クエリ形式ではない)
 		{}を使い認識する
