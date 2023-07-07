@@ -1,0 +1,7 @@
+Spring Initializer
+
+Intellij
+    Hotswapping (?)
+        https://qiita.com/okaponta_/items/c07b8e6500b0874f5695
+        https://support.samuraism.com/jetbrains/ide/idea-auto-compilation
+

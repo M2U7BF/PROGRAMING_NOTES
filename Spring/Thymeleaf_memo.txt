@@ -226,6 +226,9 @@ mapの参照
         <div id="three" th:replace="~{fragment :: three}"></div>
 
 レイアウト化
+    Decorator
+        thymeleafにおける共通レイアウトの定義
+
     依存関係の追加
     gradle
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'

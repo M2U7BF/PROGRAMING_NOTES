@@ -4,7 +4,10 @@
 クラス構造
 	参考リポジトリ
 		大規模システム
-			https://github.com/macrozheng/mall
+			mall
+			バックエンド : https://github.com/macrozheng/mall
+			フロンドエンド : https://github.com/macrozheng/mall-admin-web
+			フロントエンド : https://github.com/macrozheng/mall-app-web
 		spring bootの各機能をまとめたリポジトリ
 			https://github.com/xkcoding/spring-boot-demo
 		その他
@@ -91,6 +94,12 @@ MVC
 Spring MVC
 	構造 : https://terasolunaorg.github.io/guideline/public_review/Overview/SpringMVCOverview.html#:~:text=Overview%20of%20Spring%20MVC%20Processing%20Sequence%C2%B6
 	DispatcherServlet ･･･すべてのリクエストを受信するフロントコントローラです
+
+	Model vs Entity
+		https://www.quora.com/What-is-the-difference-between-a-model-object-and-a-entity-in-Spring-Boot
+		Modelクラスはビジネスロジックやデータの操作に関連し、ビューレイヤーやコントローラーレイヤーとのインタフェースとして機能します。
+		一方、Entityクラスはデータベースのエンティティを表し、データベースとのやり取りや永続化に関連する操作を提供します。
+		つまり、別々に実装するのがよい。
 
 	Modelインターフェイス
 		処理したデータをViewに受け渡す役割を持っています

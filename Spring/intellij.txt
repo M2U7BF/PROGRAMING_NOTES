@@ -1,0 +1,7 @@
+ショートカットキー
+    ファイルを検索して開く
+        Ctrl + N
+
+プラグイン
+    plantuml
+        https://qiita.com/ot-aoyagi/items/d2bfbff219c592822d53
