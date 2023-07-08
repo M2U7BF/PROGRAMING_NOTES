@@ -5,3 +5,7 @@
 プラグイン
     plantuml
         https://qiita.com/ot-aoyagi/items/d2bfbff219c592822d53
+
+    lombok
+        導入
+            https://plugins.gradle.org/plugin/io.freefair.lombok
