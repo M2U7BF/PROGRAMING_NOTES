@@ -13,13 +13,15 @@
 		その他
 			https://github.com/elunez/eladmin
 
-https://github.com/linlinjava/litemall/tree/master/litemall-vue
-https://github.com/YunaiV/ruoyi-vue-pro
-https://github.com/yudaocode/SpringBoot-Labs
-https://github.com/shuzheng/zheng
-https://github.com/doocs/source-code-hunter
-https://github.com/seaswalker/spring-analysis
+		https://github.com/linlinjava/litemall/tree/master/litemall-vue
+		https://github.com/YunaiV/ruoyi-vue-pro
+		https://github.com/yudaocode/SpringBoot-Labs
+		https://github.com/shuzheng/zheng
+		https://github.com/doocs/source-code-hunter
+		https://github.com/seaswalker/spring-analysis
 
+	参考ページ
+		https://qiita.com/yoshi-kinoshita/items/44363a4aeacf83efcff3
 
 Springの構造
 	実態はコンテナでありBeanのfactoryとして動作する
@@ -527,6 +529,13 @@ Maven でプロジェクトを構築する
 
 
 DBを扱う
+	ライブラリ
+		JDBC
+		JPA
+		MyBatis
+			私がJPAよりMybatisを薦める理由 → https://qiita.com/HyunwookPark/items/c4b38261a10022c1f476
+			~~MapperというクラスがRepositoryクラスに当たる。(DB操作を担当する)
+
 	MySQLを設定する
 		spring.jpa.hibernate.ddl-auto=update
 		spring.datasource.url=jdbc:mysql:ここにlocalhost以下を入力(例 //localhost:3306/mydb)
