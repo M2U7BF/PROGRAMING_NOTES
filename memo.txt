@@ -1,18 +1,10 @@
-AWSの構築をします
+UPDATE `style_classifications` SET name= 'その他届出' WHERE id=3;
 
-仮想ネットワーク作成
-1. VPC作成 (10.0.0.0/24)
-2. パブリックサブネット作成 (10.0.0.0/28)
-3. インターネットゲートウェイ作成
-4. ルートテーブル作成
-5. セキュリティグループ作成
-
-Webサーバーを用意
-1. キーペア作成
-2. EC2インスタンス作成　Elastic IPの割り当ても行う
-3. SSH接続一旦接続してみる
-
-1. Apacheインストール
-→ デフォルト
-2. HTMLファイル配置
-3.接続
+UPDATE `styles` SET name='参考様式3-6号  受入れ・活動状況に係る届出書' WHERE id=9;
+UPDATE `styles` SET name='参考様式3-6号（別紙）  特定技能外国人の受入れ状況・報酬の支払状況' WHERE id=10;
+UPDATE `styles` SET name='参考様式4-3号  支援実施状況に係る届出書' WHERE id=11;
+UPDATE `styles` SET name='参考様式4-3号（別紙） １号特定技能外国人支援対象者名簿' WHERE id=12;
+UPDATE `styles` SET name='参考様式5-5号  定期面談報告書（１号特定技能外国人用）' WHERE id=13;
+UPDATE `styles` SET name='参考様式5-6号  定期面談報告書（監督者用）' WHERE id=14;
+UPDATE `styles` SET name='特定技能外国人の活動状況に係る文書(管理簿)' WHERE id=15;
+UPDATE `styles` SET name='特定技能外国人支援の状況に係る文書(管理簿)' WHERE id=16;

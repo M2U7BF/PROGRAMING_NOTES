@@ -62,5 +62,11 @@ remoteリポジトリを変更する
         ```
         https://qiita.com/muraikenta/items/e590a380191971f9c4c3
 
+コミット
+    コミットID
+        - git logで確認する方法
+        - github.comで確認する方法
+            コミット履歴を表示した際のURLのID
+
 自動PULL
     https://qiita.com/mkzyk/items/f6fb42bfee757d8245de
