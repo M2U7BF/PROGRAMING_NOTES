@@ -62,6 +62,11 @@ remoteリポジトリを変更する
 
     削除済みのブランチを消す
         https://qiita.com/kony/items/f0fb18b04bd5337132e3
+コミット
+    コミットID
+        - git logで確認する方法
+        - github.comで確認する方法
+            コミット履歴を表示した際のURLのID
 
 自動PULL
     https://qiita.com/mkzyk/items/f6fb42bfee757d8245de

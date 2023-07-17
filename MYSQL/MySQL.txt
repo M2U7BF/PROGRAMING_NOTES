@@ -62,6 +62,10 @@
     ```
      export LC_ALL=en_US.UTF-8
     ```
+    もしくは
+    ```
+    SET NAMES 'utf8mb4';
+    ```
 
     my.iniの[mysqld]
     ```
