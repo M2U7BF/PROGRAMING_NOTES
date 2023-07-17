@@ -56,11 +56,12 @@ remoteリポジトリを変更する
 
     全部ブランチをリモートからプル
         ```
-        $ for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
-        $ git fetch --all
-        $ git pull --all
+        for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done && git fetch --all && git pull --all
         ```
         https://qiita.com/muraikenta/items/e590a380191971f9c4c3
+
+    削除済みのブランチを消す
+        https://qiita.com/kony/items/f0fb18b04bd5337132e3
 
 自動PULL
     https://qiita.com/mkzyk/items/f6fb42bfee757d8245de

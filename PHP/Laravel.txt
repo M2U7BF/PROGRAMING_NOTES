@@ -107,5 +107,15 @@ DB操作
     ```
 
 テスト
+    コマンド
+        実行
+            ```
+            php artisan test
+            ```
+    無効化
+        ```
+        $this->markTestSkipped('一時的に無効化されたテスト');
+        ```
+
     高速化
         https://r-tech14.com/laravel-test-speedy/
