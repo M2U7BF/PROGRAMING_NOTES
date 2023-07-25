@@ -22,6 +22,25 @@
 		https://github.com/doocs/source-code-hunter
 		https://github.com/seaswalker/spring-analysis
 
+		https://github.com/withstars/Books-Management-System
+			→簡素な書籍管理アプリ
+		https://github.com/jammy928/CoinExchange_CryptoExchange_Java
+			→仮想通貨取引プラットフォーム
+		https://github.com/dromara/sureness
+			→認証系のライブラリ
+		https://github.com/BottegaIT/ddd-leaven-v2
+			→ecサイトの例? 設計の参考になりそうだ。
+		https://github.com/201206030/novel-cloud
+			→書籍を扱うpixivみたいなプラットフォーム
+		https://github.com/moduliths/moduliths
+			→型定義などに関するライブラリ
+		https://github.com/zalando/problem-spring-web
+			→エラーレスポンス生成のライブラリ
+		https://github.com/codecentric/chaos-monkey-spring-boot
+			→Chaos monkey。カオスエンジニアリングというホワイトハッカー的な。
+		https://github.com/cheese10yun/spring-jpa-best-practices
+			→ 開発におけるTipsをまとめてあるようだ。有益そう
+
 	参考ページ
 		https://qiita.com/yoshi-kinoshita/items/44363a4aeacf83efcff3
 
