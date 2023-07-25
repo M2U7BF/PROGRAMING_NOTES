@@ -10,6 +10,8 @@
 			フロントエンド : https://github.com/macrozheng/mall-app-web
 		spring bootの各機能をまとめたリポジトリ
 			https://github.com/xkcoding/spring-boot-demo
+		素振り用レポジトリ例
+			https://github.com/backpaper0/spring-boot-sandbox
 		その他
 			https://github.com/elunez/eladmin
 

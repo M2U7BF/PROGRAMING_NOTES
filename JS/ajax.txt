@@ -1,0 +1,24 @@
+jsonデータの送信
+    ```
+    function submitForm(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const obj = Object.fromEntries(formData)
+
+        $.ajax({
+            url: '/messages/send',
+            type: 'POST',
+            data: obj,
+            contentType: "application/json",
+            success: function(response) {
+                // console.log(response);
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    }
+    ```
+
+一部を書き換え
+    https://www.searchlight8.com/ajax-base/

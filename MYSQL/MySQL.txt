@@ -60,7 +60,7 @@
 
 日本語入力できない
     ```
-     export LC_ALL=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
     ```
     もしくは
     ```

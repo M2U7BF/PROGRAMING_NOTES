@@ -266,9 +266,12 @@ selectタグ optionタグのselected属性を扱う
     繰り返し処理の場合
     th:onchange="calcTotal([[${itemData.price[iter.index]}]],[[${itemData.numPurchase[iter.index]}]])"
 
-Springの認証との連携
+Springの認証との連携 Spring security
+    参照
+        https://github.com/thymeleaf/thymeleaf-extras-springsecurity
+
     認証済みかどうかで表示を切り替える    https://www.docswell.com/s/MasatoshiTada/KGVY9K-spring-security-intro#p27
-    <p sec:authorize="" >
+      <p sec:authorize="authenticated">
 
     認可を判断して表示内容を切り替える
         <div sec:authorize-url="/admin">
@@ -288,3 +291,6 @@ Springの認証との連携
     <div sec:authorize="hasRole('ROLE_ADMIN')">
     ADMINロールを持っている場合のみ表示される
     </div>
+
+    ログアウト処理のカスタマイズ
+        https://spring.pleiades.io/spring-security/reference/servlet/authentication/logout.html

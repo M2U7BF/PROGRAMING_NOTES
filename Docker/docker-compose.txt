@@ -12,3 +12,13 @@ dockerコンテナへファイルを転送
     https://qiita.com/gologo13/items/7e4e404af80377b48fd5
 
 docker-compose build --no-cache
+
+ファイルのマウント
+    build文はlongの書き方のほうが安全
+        https://zenn.dev/sarisia/articles/0c1db052d09921
+
+        公式ドキュメント : https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes
+
+FW別記述例
+    spring
+        https://qiita.com/wataling/items/fa8b74fa50d80b88aea3

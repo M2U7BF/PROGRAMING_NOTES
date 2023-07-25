@@ -2,6 +2,9 @@
     ファイルを検索して開く
         Ctrl + N
 
+hotswap
+    https://support.samuraism.com/jetbrains/ide/idea-auto-compilation
+
 プラグイン
     plantuml
         https://qiita.com/ot-aoyagi/items/d2bfbff219c592822d53

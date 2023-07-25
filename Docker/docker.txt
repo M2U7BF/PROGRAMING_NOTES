@@ -12,3 +12,5 @@ OS間ファイル転送
     引用 : https://qiita.com/gologo13/items/7e4e404af80377b48fd5
     ```
 
+entrypoint と cmd の違い
+    https://qiita.com/uehaj/items/e6dd013e28593c26372d
