@@ -1,3 +1,6 @@
+業務のSQL
+    https://github.com/macrozheng/mall/blob/master/document/sql/mall.sql
+
 テーブルを作成する
 
 レコードを挿入する
