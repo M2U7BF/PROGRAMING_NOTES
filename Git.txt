@@ -56,7 +56,9 @@ remoteリポジトリを変更する
 
     全部ブランチをリモートからプル
         ```
-        for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done && git fetch --all && git pull --all
+        for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
+        git fetch --all
+        git pull --all
         ```
         https://qiita.com/muraikenta/items/e590a380191971f9c4c3
 
