@@ -4,5 +4,50 @@
         string hoge = "hoge";
         ```
 
+        定数
+            ```
+            const string hoge = "";
+            ```
+
+    型
+        int
+        string
+        bool
+
+    配列
+        概要
+            同じデータ型の要素を連続したメモリ領域に格納する静的なデータ構造です。
+            固定サイズのデータ構造が必要であれば、配列を使用します。
+
+        宣言
+            ```
+            int[] array = new int[3];
+            int[] array = new int[3] {0, 1, 2};
+            ```
+
+        関数
+            array.Length
+                長さの取得
+
+    List
+        概要
+            リストは、動的なサイズ変更が可能なコレクションで、要素の追加や削除が容易です。C#の標準ライブラリであるSystem.Collections.Generic名前空間に含まれています。
+            可変サイズのデータ構造で、要素の追加や削除が多い場合は、配列よりリストが適しています。
+
+        宣言
+            ```
+            List<int> numbers = new List<int>() { 1, 2, 3};
+            ```
+
+        関数
+            list.Add(hoge);
+            list.RemoveAt(hoge);
+            list.Count();
+
+制御構文
+    if
+    switch
+    while
+
 デバッグ
     Debug.Log();
