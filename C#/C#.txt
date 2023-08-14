@@ -1,0 +1,8 @@
+変数
+    宣言
+        ```
+        string hoge = "hoge";
+        ```
+
+デバッグ
+    Debug.Log();
