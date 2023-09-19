@@ -56,6 +56,13 @@ remoteリポジトリを変更する
 
     全部ブランチをリモートからプル
         ```
+        git fetch --all
+        git pull --all
+        git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+        ```
+        https://www.w3docs.com/snippets/git/how-to-fetch-all-git-branches.html
+
+        ```
         for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
         git fetch --all
         git pull --all
@@ -63,6 +70,11 @@ remoteリポジトリを変更する
         https://qiita.com/muraikenta/items/e590a380191971f9c4c3
 
     削除済みのブランチを消す
+        ```
+        git remote show origin
+        git remote prune --dry-run origin
+        git remote prune origin
+        ```
         https://qiita.com/kony/items/f0fb18b04bd5337132e3
 コミット
     コミットID
