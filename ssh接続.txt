@@ -8,6 +8,29 @@ https://eng-entrance.com/linux-ssh-key
     .ssh/configを編集
     ssh接続をテスト
 
+    別の方法)
+        1) ディレクトリ、ファイル用意
+        CentOSで~/.sshを作成
+        ~/.ssh/authorized_keysを作成
+
+        2)id_rsaを送信
+
+        3)configを編集
+        ```
+        Host github github.com
+            HostName github.com
+            IdentityFile ~/.ssh/id_rsa
+            User git
+        ```
+
+        4)公開鍵作成
+        ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+
+        5)authorized_keysに追記
+        ```
+        cat id_ecdsa.pub >> ~/.ssh/authorized_keys
+        ```
+
 scp
     ```
     scp -P <ポート> <元パス> <先パス>
