@@ -80,6 +80,7 @@
     MySQLを再起動
 
     yum install systemd -y
+            引用 : https://weblabo.oscasierra.net/mysql-database-copy/
     yum install sudo -y
     ↓
     ローカルのmysqlを使用することに
@@ -114,7 +115,6 @@
             ```
             mysqldump -u user_name -p from_db > from_db.dump.sql
 
-            引用 : https://weblabo.oscasierra.net/mysql-database-copy/
             ```
 
             テーブル単位

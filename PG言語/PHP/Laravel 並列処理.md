@@ -61,6 +61,5 @@
 ### Queの実行
 下記を実行しておく。非同期処理を逐次実行する。
 ```
-php artisan queue:work
+php artisan queue:work --daemon
 ```
-
