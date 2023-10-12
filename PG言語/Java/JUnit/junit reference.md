@@ -20,6 +20,7 @@
 ##### @WithCustomMockUser (自作)
 カスタムユーザーの利用
 https://qiita.com/kazokmr/items/9fab9ad267d70e25da8d
+https://docs.spring.io/spring-security/site/docs/4.2.x/reference/html/test-method.html#test-method-withsecuritycontext
 
 ### 各アノテーション
 
