@@ -30,8 +30,24 @@ to set up system state and input data needed for test execution.
 @After
   各テストケースの後に実行するメソッド
 
+### テストケースの作成
+@Test
+  テストメソッドとして認識させる
 
-### テストの実行
+  @Test(timeout=500)
+    タイムアウトを設定。実行時間がある範囲内であるかテストする。
+
+### その他アノテーション
+@Ignores
+  テストのスキップを設定する
+@Test(expected=IllegalArgumentException.class)
+  メソッドが特定のエラーを扱うか、テストする。
+
+
+## テストの実行手順
+
+1. テストケースを作成する
+2. TestRunnerクラスを作成する
 
 下記のようにして、テストの実行順番を指定する。
 ```
@@ -44,6 +60,7 @@ for (Failure failure : result.getFailures()) {
 }
 System.out.println(result.wasSuccessful());
 ```
+
 
 ### ログイン状態
 ##### @WithMockUser
