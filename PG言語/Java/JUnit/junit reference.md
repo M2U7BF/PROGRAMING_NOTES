@@ -106,6 +106,27 @@ void stop()
   This method is used to test run to be stopped.
 
 
+## JUnit Test Suite Class
+void addTest(Test test)
+  This method is used if you want to add a test to the suite.
+void addTestSuite(Class<? extends TestCase> testClass)
+  This method is used if you want to specify the class while adding a test to the suite.
+int countTestCases()
+  This method is used if you want to count the number of test cases.
+String getName()
+  This method is used to get the name of the test suite.
+void run(TestResult result)
+  This method is used to execute a test and collect test result in TestResult object.
+void setName(String name)
+  This method is used to set the name of TestSuite.
+Test testAt(int index)
+  This method is used if you want to return the test at given index.
+int testCount()
+  This method is used if you want to return a number of tests in the Suite.
+static Test warning(String message)
+  This method returns a test which will fail and log a warning message.
+
+
 ## テストの実行手順
 
 1. テストケースを作成する
