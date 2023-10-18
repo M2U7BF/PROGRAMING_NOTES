@@ -19,6 +19,7 @@ to set up system state and input data needed for test execution.
 クラス毎に作成するのが一般的（ネット調べ）。クラス毎にテストクラスを作成し、各メソッドや機能を単独でテストする。
 
 ## Junitのリファレンス
+## Junitアノテーション
 ### セットアップ/終了
 @BeforeClass
   テストの前に1回だけ実行するメソッド
@@ -42,6 +43,67 @@ to set up system state and input data needed for test execution.
   テストのスキップを設定する
 @Test(expected=IllegalArgumentException.class)
   メソッドが特定のエラーを扱うか、テストする。
+
+
+## Junit AssertClass
+void assertEquals(boolean expected, boolean actual)
+  It checks whether two values are equals similar to equals method of Object class
+void assertFalse(boolean condition)
+  functionality is to check that a condition is false.
+void assertNotNull(Object object)
+  “assertNotNull” functionality is to check that an object is not null.
+void assertNull(Object object)
+  “assertNull” functionality is to check that an object is null.
+void assertTrue(boolean condition)
+  “assertTrue” functionality is to check that a condition is true.
+void fail()
+  If you want to throw any assertion error, you have fail() that always results in a fail verdict.
+void assertSame([String message]
+  “assertSame” functionality is to check that the two objects refer to the same object.
+void assertNotSame([String message]
+  “assertNotSame” functionality is to check that the two objects do not refer to the same object.
+
+
+## JUnit Test Cases Class
+int countTestCases()
+  This method is used to count how many number of test cases executed by run(TestResult tr) method.
+TestResult createResult()
+  This method is used to create a TestResult object.
+String getName()
+  This method returns a string which is nothing but a TestCase.
+TestResult run()
+  This method is used to execute a test which returns a TestResult object
+void run(TestResult result)
+  This method is used to execute a test having a TestResult object which doesn’t returns anything.
+void setName(String name)
+  This method is used to set a name of a TestCase.
+void setUp()
+  This method is used to write resource association code. e.g. Create a database connection.
+void tearDown()
+  This method is used to write resource release code. e.g. Release database connection after performing transaction operation.
+
+
+## JUnit TestResult Class
+void addError(Test test, Throwable t)
+  This method is used if you require add an error to the test.
+void addFailure(Test test, AssertionFailedError t)
+  This method is used if you require add a failure to the list of failures.
+void endTest(Test test)
+  This method is used to notify that a test is performed(completed)
+int errorCount()
+  This method is used to get the error detected during test execution.
+Enumeration<TestFailure> errors()
+  This method simply returns a collection (Enumeration here) of errors.
+int failureCount()
+  This method is used to get the count of errors detected during test execution.
+void run(TestCase test)
+  This method is used to execute a test case.
+int runCount()
+  This method simply counts the executed test.
+void startTest(Test test)
+  This method is used to notify that a test is started.
+void stop()
+  This method is used to test run to be stopped.
 
 
 ## テストの実行手順
