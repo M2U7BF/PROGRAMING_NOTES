@@ -8,6 +8,7 @@
 			バックエンド : https://github.com/macrozheng/mall
 			フロンドエンド : https://github.com/macrozheng/mall-admin-web
 			フロントエンド : https://github.com/macrozheng/mall-app-web
+			モデル図 : https://github.com/macrozheng/mall-learning/blob/master/docs/database/mall_database_overview.md
 		spring bootの各機能をまとめたリポジトリ
 			https://github.com/xkcoding/spring-boot-demo
 		素振り用レポジトリ例

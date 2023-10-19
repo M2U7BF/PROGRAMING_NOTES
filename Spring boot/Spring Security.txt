@@ -1,5 +1,0 @@
-Role
-    Role.USER.name : 規定のRoleクラスから参照
-
-    hasRoleのROLE_自動付与
-    参考 : https://qiita.com/yokobonbon/items/7d729bd8085f3fb898bb

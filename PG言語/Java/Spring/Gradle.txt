@@ -1,0 +1,3 @@
+ビルド
+    gradle  build --refresh-dependencies
+    gradle  build

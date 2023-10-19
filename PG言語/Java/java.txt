@@ -1,0 +1,45 @@
+出力
+    配列
+        Arrays.toString(arr1)
+        Arrays.deepToString(week)
+
+クラス
+    ジェネリッククラス
+        ジェネリッククラスでは <T> のような型パラメータを使用して定義します。
+        ここで T は仮の型引数を表し、実際の使用時に具体的な型（例えば、Integer、Stringなど）で置き換えられます。
+        これにより、複数のデータ型に対応するクラスを一度に定義できます。
+
+        ```
+        // 通常のクラスの例
+        public class NormalResult {
+            private Object data;
+
+            public NormalResult(Object data) {
+                this.data = data;
+            }
+
+            public Object getData() {
+                return data;
+            }
+        }
+
+        // ジェネリッククラスの例
+        public class CommonResult<T> {
+            private T data;
+
+            public CommonResult(T data) {
+                this.data = data;
+            }
+
+            public T getData() {
+                return data;
+            }
+        }
+
+        // 使用例
+        NormalResult normal = new NormalResult("Hello");
+        CommonResult<String> generic = new CommonResult<>("Hello");
+
+        String normalData = (String) normal.getData(); // キャストが必要
+        String genericData = generic.getData();        // キャスト不要で使える
+        ```
