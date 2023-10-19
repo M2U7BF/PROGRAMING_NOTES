@@ -37,6 +37,7 @@
         宣言
             ```
             List<int> numbers = new List<int>() { 1, 2, 3};
+
             ```
 
         関数
@@ -44,10 +45,53 @@
             list.RemoveAt(hoge);
             list.Count();
 
+    列挙型
+        ```
+        public enum TYPE
+        {
+            STOP,
+            RIGHT,
+            LEFT
+        }
+
+        //use
+        TYPE type = TYPE.STOP;
+
+        ```
+
+関数
+    宣言
+        ```
+        void sampleFunc()
+        {
+            // logic
+        }
+
+        void sampleFunc(string name, int)
+        {
+            // logic
+        }
+        ```
+
+
 制御構文
     if
     switch
     while
+    for
+    省略for
+    foreach
+        ```
+        foreach(string Name in nameList)
+        {
+            //
+        }
+        ```
 
 デバッグ
     Debug.Log();
+
+    インライン記法
+        ```
+        $"x: {x}, y: {y}"
+        ```
