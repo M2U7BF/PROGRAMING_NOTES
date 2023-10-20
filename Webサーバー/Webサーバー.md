@@ -16,5 +16,17 @@ Webページの場合、CSS、画像、jsなどを読み込むが、
 - Content-Type
   - MIME-Typeで表記する。
 
+application/x-www-form-urlencoded
+  <form>タグでenctype属性を指定しなかった場合に使われるデフォルトのフォーマット
+  「URLエンコーディング」や「パーセントエンコーディング」とも呼ばれ、URLとして利用可能な文字のみを使って様々なデータを表せるようにフォーマットが決められています。
+
+multipart/form-data
+  enctype属性で明示的に指定する
+  フォームデータの各項目が特殊なセパレータによって分割される。
+
+application/json
+  ajaxによって使える。
+
+
 ### TCP/UDP
 
