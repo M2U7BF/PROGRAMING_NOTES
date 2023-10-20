@@ -7,5 +7,38 @@
         50ms毎に呼ばれる。
 
 
-オブジェクトを取得する関数
-    GetComponent<T>
+GetComponent<T>
+    オブジェクトを取得する関数
+
+transform
+    移動処理
+        ```
+        transform.position += new Vector3(0.1f, 0, 0); `
+        ```
+
+rigidbody
+    物理演算をする。
+
+    rigidbody.velocity
+        ```
+        rigidbody.velocity = new Vector3(1f,0,0);
+        ```
+
+    rigidbody.AddForce()
+        ```
+        rigidbody.AddForce(new Vector3(0, 10, 0));
+        ```
+        オブジェクトに力を加える。移動する。
+
+
+Collider
+    あたり判定
+
+    BoxCollider
+        isTrigger
+            すり抜けるかどうか。
+
+        OnTriggerEnter
+
+
+
