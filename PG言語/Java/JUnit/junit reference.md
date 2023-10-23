@@ -51,7 +51,6 @@ to set up system state and input data needed for test execution.
 @Test(expected=IllegalArgumentException.class)
   メソッドが特定のエラーを扱うか、テストする。
 
-
 ## Junit AssertClass
 void assertEquals(boolean expected, boolean actual)
   It checks whether two values are equals similar to equals method of Object class
@@ -132,6 +131,41 @@ int testCount()
   This method is used if you want to return a number of tests in the Suite.
 static Test warning(String message)
   This method returns a test which will fail and log a warning message.
+
+
+例）
+```
+import org.example.CsvFileUtilTest;
+import org.example.FileUtilTest;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses({FileUtilTest.class, CsvFileUtilTest.class})
+public class TestSuiteExample {
+}
+```
+
+
+## JUnit Test Runner Class
+例）
+```
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
+public class Test {
+    public static void main(String[] args){
+        Result result = JUnitCore.runClasses(TestSuiteExample.class);
+        for (Failure failure : result.getFailures()){
+            System.out.println(failure.toString());
+        }
+        System.out.println(result.wasSuccessful());
+    }
+}
+```
 
 
 ## テストの実行手順
