@@ -3,8 +3,15 @@
 - [概説](#概説)
   - [テスト作成単位](#テスト作成単位)
 - [Junitのリファレンス](#junitのリファレンス)
+- [Junitアノテーション](#junitアノテーション)
   - [セットアップ/終了](#セットアップ終了)
-  - [テストの実行](#テストの実行)
+  - [テストケースの作成](#テストケースの作成)
+  - [その他アノテーション](#その他アノテーション)
+- [Junit AssertClass](#junit-assertclass)
+- [JUnit Test Cases Class](#junit-test-cases-class)
+- [JUnit TestResult Class](#junit-testresult-class)
+- [JUnit Test Suite Class](#junit-test-suite-class)
+- [テストの実行手順](#テストの実行手順)
   - [ログイン状態](#ログイン状態)
       - [@WithMockUser](#withmockuser)
       - [@WithCustomMockUser (自作)](#withcustommockuser-自作)
@@ -130,7 +137,9 @@ static Test warning(String message)
 ## テストの実行手順
 
 1. テストケースを作成する
-2. TestRunnerクラスを作成する
+2. テストスイートクラスを作成する
+3. TestRunnerクラスを作成する
+4. 実行
 
 下記のようにして、テストの実行順番を指定する。
 ```
@@ -145,14 +154,14 @@ System.out.println(result.wasSuccessful());
 ```
 
 
-### ログイン状態
-##### @WithMockUser
+## ログイン状態
+#### @WithMockUser
 ユーザーで擬似ログイン
 
-##### @WithCustomMockUser (自作)
+#### @WithCustomMockUser (自作)
 カスタムユーザーの利用
 https://qiita.com/kazokmr/items/9fab9ad267d70e25da8d
 https://docs.spring.io/spring-security/site/docs/4.2.x/reference/html/test-method.html#test-method-withsecuritycontext
 
-### 各アノテーション
+## 各アノテーション
 
