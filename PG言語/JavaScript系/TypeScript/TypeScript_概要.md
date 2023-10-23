@@ -12,3 +12,9 @@
 - AngularJS
 - React
 - Vue.js
+
+## パフォーマンス
+- パフォーマンスはJavaScriptと同様。
+- TypeScriptのランタイムは無く、コンパイルしてJavaScriptとなる。
+- コンパイルは、主に｢型をなくす｣処理のみ。コードの最適化はしない。
+https://typescriptbook.jp/overview/typescript-is-not-that
