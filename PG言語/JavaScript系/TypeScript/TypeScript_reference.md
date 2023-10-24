@@ -1,3 +1,4 @@
+- [ドキュメント](#ドキュメント)
 - [変数](#変数)
   - [宣言](#宣言)
     - [オブジェクト型](#オブジェクト型)
@@ -17,7 +18,50 @@
   - [Any](#any)
   - [Void](#void)
   - [Never](#never)
+- [型アサーション](#型アサーション)
+  - [書き方](#書き方)
+  - [キャストとの違い](#キャストとの違い)
+- [switch文](#switch文)
+- [for](#for)
+- [関数](#関数)
+  - [定義](#定義)
+    - [Anonymous Function](#anonymous-function)
+    - [引数](#引数)
+    - [オプションの引数](#オプションの引数)
+    - [デフォルトの引数](#デフォルトの引数)
+  - [特別な形](#特別な形)
+    - [アロー関数](#アロー関数)
+    - [関数のオーバーロード](#関数のオーバーロード)
+    - [残余引数](#残余引数)
+- [インターフェース](#インターフェース)
+  - [定義](#定義-1)
+- [クラス](#クラス)
+  - [クラス操作](#クラス操作)
+    - [クラスオブジェクト作成](#クラスオブジェクト作成)
+    - [継承](#継承)
+    - [インターフェースの実装](#インターフェースの実装)
+- [アクセス修飾子](#アクセス修飾子)
+  - [readonlyキーワード](#readonlyキーワード)
+- [モジュール](#モジュール)
+  - [操作](#操作-1)
+    - [export](#export)
+    - [import](#import)
+      - [Renaming Export Module](#renaming-export-module)
+- [名前空間](#名前空間)
+- [Generics](#generics)
+  - [Generic Interfaces](#generic-interfaces)
+  - [Generic Class](#generic-class)
 
+
+----------
+
+
+## ドキュメント
+英語
+[TypeScript Documentation](https://devdocs.io/typescript/)
+
+日本語
+[サバイバルTypeScript](https://typescriptbook.jp/)
 
 ## 変数
 ### 宣言
@@ -333,14 +377,196 @@ function Greet(name: string, greeting: string = "Hello") : string {
 ```
 
 
-クラス定義
+### 特別な形
+#### アロー関数
+アロー関数式は、従来の関数式の簡潔な代替構文ですが、意味的な違いや意図的な使用上の制限もあります。
+- アロー関数自身には this、arguments、super へのバインドがないので、メソッドとして使用することはできません。
+- アロー関数はコンストラクターとして使用することはできません。 new をつけて呼び出すと TypeError が発生します。 new.target キーワードにアクセスすることもできません。
+- アロー関数は本体内で yield を使用することができず、ジェネレーター関数として作成することもできません。
 
-インターフェイス定義
-    interface User {
-        name: string;
-        age: number;
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+
+#### 関数のオーバーロード
+引数と戻り値型が異なれば、同名の関数を定義できる。
+
+
+#### 残余引数
+個数未定の引数を定義できる。
+
+例）
+```
+function Greet(greeting: string, ...names: string[]) {
+    return greeting + " " + names.join(", ") + "!";
+}
+
+Greet("Hello", "Steve", "Bill"); // returns "Hello Steve, Bill!"
+
+Greet("Hello");// returns "Hello !"
+```
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/rest_parameters
+
+
+## インターフェース
+インターフェースはクラスが実装すべきフィールドやメソッドを定義した型です。
+Javaとは異なり、フィールドについても定義できます。
+
+### 定義
+```
+interface Person{
+    name:string;
+    age:number;
+}
+
+class Taro implements Person{
+    name:string;
+    age:number;
+}
+```
+
+
+## クラス
+Javaと同じ。
+```
+class Employee {
+    //フィールドの定義
+    public empCode: number;
+    public empName: string;
+
+    //コンストラクターの定義
+    constructor(code: number, name: string) {
+            this.empName = name;
+            this.empCode = code;
     }
 
-    interface UserDictionary {
-        [id: string]: User;
+    //メソッドの定義
+    getSalary() : number {
+        return 10000;
     }
+}
+```
+
+
+### クラス操作
+#### クラスオブジェクト作成
+Javaと同じ。
+```
+let emp = new Employee();
+```
+
+#### 継承
+Javaと同じ。
+```
+class Employee extends Person {
+    ...
+}
+```
+
+#### インターフェースの実装
+Javaと同じ。
+```
+class Employee implements IPerson, IEmployee {
+    ...
+}
+```
+
+## アクセス修飾子
+### readonlyキーワード
+オブジェクト型のプロパティを読み取り専用にする。
+
+
+## モジュール
+JavaScriptでは、デフォルトで全ファイルの変数が全ファイルから参照できるようになっている。
+モジュールという考えでまとめることで下記メリットを享受する。
+1. 保守性の向上
+2. 変数の衝突を防止
+3. コードの再利用を容易にする
+
+
+### 操作
+#### export
+```
+export let age : number = 20;
+export class Employee {
+    empCode: number;
+    empName: string;
+    constructor(name: string, code: number) {
+        this.empName = name;
+        this.empCode = code;
+    }
+    displayEmployee() {
+        console.log ("Employee Code: " + this.empCode + ", Employee Name: " + this.empName );
+    }
+}
+let companyName:string = "XYZ";
+```
+
+
+#### import
+```
+Import { export name } from "file path without extension"
+```
+
+##### Renaming Export Module
+asキーワードで、名前の変更ができる
+```
+import { Employee as Associate } from "./Employee"
+let obj = new Associate("James Bond" , 3);
+obj.displayEmployee();//Output: Employee Code: 3, Employee Name: James Bond
+```
+
+
+## 名前空間
+名前空間よりも柔軟なモジュールを好んで使用する、という例もあるようだ。
+```
+namespace <name>
+{
+
+}
+```
+
+
+## Generics
+基本Javaと同じ。
+
+例）
+```
+function getArray<T>(items : T[] ) : T[] {
+    return new Array<T>().concat(items);
+}
+```
+
+複数の場合、Tに加え、Uキーワードを用いる。
+```
+function displayType<T, U>(id:T, name:U): void {
+  console.log(typeof(id) + ", " + typeof(name));
+}
+
+displayType<number, string>(1, "Steve"); // number, string
+```
+
+### Generic Interfaces
+```
+interface KeyPair<T, U> {
+    key: T;
+    value: U;
+}
+```
+
+### Generic Class
+```
+class KeyValuePair<T,U>
+{
+    private key: T;
+    private val: U;
+
+    setKeyValue(key: T, val: U): void {
+        this.key = key;
+        this.val = val;
+    }
+
+    display():void {
+        console.log(`Key = ${this.key}, val = ${this.val}`);
+    }
+}
+```
