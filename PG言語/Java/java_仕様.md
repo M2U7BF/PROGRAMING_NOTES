@@ -1,3 +1,10 @@
+- [標準API](#標準api)
+- [文字列操作のクラス](#文字列操作のクラス)
+      - [String](#string)
+      - [StringBuffer](#stringbuffer)
+      - [StringBuilder](#stringbuilder)
+
+
 ## 標準API
 よく使われる標準APIを以下にまとめる。
 
@@ -53,24 +60,25 @@ java.util.zip
 
 ## 文字列操作のクラス
 文字列操作には、以下のクラスがある。
-1. String
-2. StringBuffer
-3. StringBuilder
+1. java.lang.String
+2. java.lang.StringBuffer
+3. java.lang.StringBuilder
 
 操作の仕組みが異なり、実行速度も異なる。
 
-##### String
+### String
 - 文字列は可変でない。
   - つまり、値を更新するたびに新しい変数を作成している。
 - メモリの節約となる。
   - 他のクラスに比べ変更への準備のためのメモリ確保は不要。ただし、文字列操作をする際はメモリを浪費する。
 
-##### StringBuffer
+### StringBuffer
 - 文字列は可変。配列のようになっている。
 - マルチスレッドに対応している。スレッドセーフである。
 - 速い。
 
-##### StringBuilder
+### StringBuilder
 - 文字列は可変。配列のようになっている。
 - 単一のスレッドで動作する。
 - 最も速い。
+
