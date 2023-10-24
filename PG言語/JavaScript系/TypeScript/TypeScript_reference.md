@@ -4,14 +4,16 @@
     - [オブジェクト型](#オブジェクト型)
   - [変数宣言文](#変数宣言文)
 - [標準のデータ型とその操作](#標準のデータ型とその操作)
-  - [数値操作系](#数値操作系)
-  - [文字列](#文字列)
-  - [文字列操作系](#文字列操作系)
-  - [真偽値](#真偽値)
-  - [配列](#配列)
+  - [組み込みオブジェクト型一覧](#組み込みオブジェクト型一覧)
+  - [Number (数値系)](#number-数値系)
+    - [操作メソッド](#操作メソッド)
+  - [String (文字列)](#string-文字列)
+  - [操作メソッド](#操作メソッド-1)
+  - [Boolean (真偽値)](#boolean-真偽値)
+  - [Arrays (配列)](#arrays-配列)
     - [宣言](#宣言-1)
     - [操作](#操作)
-    - [配列操作系](#配列操作系)
+    - [操作メソッド](#操作メソッド-2)
   - [タプル](#タプル)
   - [Enum](#enum)
   - [Union](#union)
@@ -101,7 +103,31 @@ const
 
 
 ## 標準のデータ型とその操作
-### 数値操作系
+### プリミティブ型一覧
+- undefined
+- boolean
+- number
+- bigint
+- string
+- symbol
+
+https://developer.mozilla.org/ja/docs/Glossary/Primitive
+
+#### プリミティブ型の特徴
+イミュータブルである。
+つまり、値自体を変更できず、参照値のみ変更できる。
+
+https://zenn.dev/hogeisfuga/articles/db8a14a19f91ce
+
+
+### 組み込みオブジェクト型一覧
+プリミティブ型のラッパクラスと思われる。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects
+
+### Number (数値系)
+number型(数値型): 0や0.1のような数値。
+
+#### 操作メソッド
 toFixed()
     数を固定小数点表記を用いて整形します。
 toPrecision()
@@ -111,12 +137,13 @@ valueOf()
     指定されたオブジェクトのプリミティブな値を返します。
 
 
-### 文字列
+### String (文字列)
+string型(文字列型): "Hello World"のような文字列。
+
 テンプレートリテラル（テンプレート文字列）
     - バッククオートを用いて、文字列を作成する。
 
-
-### 文字列操作系
+### 操作メソッド
 charAt()
 concat()
 indexOf()
@@ -124,14 +151,16 @@ replace()
 split()
 
 
-### 真偽値
+### Boolean (真偽値)
+boolean型(論理型): trueまたはfalseの真偽値。
+
 TypeScriptの場合、注意が必要である。
 Booleanとbooleanは違う。Booleanはオブジェクト型でbooleanはプリミティブ型。
 判定に、積極的にbooleanを用いるようにするべき。
 https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
 
-### 配列
+### Arrays (配列)
 #### 宣言
 ```
 let fruits: string[] = ['Apple', 'Orange', 'Banana'];
@@ -152,7 +181,7 @@ let fruits: string[] = ['Apple', 'Orange', 'Banana'];
 fruits[0]; // returns Apple
 ```
 
-#### 配列操作系
+#### 操作メソッド
 pop()
 push()
 sort()
@@ -177,6 +206,7 @@ slice()
 toString()
 toLocaleString()
     配列の要素を表す文字列を返します。配列の要素は、それぞれの toLocaleString メソッドを使い、ロケール固有の文字列に変換されます（例えばカンマ "," など）。
+
 
 ### タプル
 タプルは配列をより厳格に定義できる。
