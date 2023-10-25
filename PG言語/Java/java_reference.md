@@ -141,6 +141,25 @@
         RetentionPolicy.SOURCE： 実行時に破棄されます。
         RetentionPolicy.CLASS： .classファイルに記録されますが、実行時に破棄されます。CLASSは、Javaのデフォルトの保持ポリシーです。
         RetentionPolicy.RUNTIME： 実行時に保持され、実行時にプログラムでアクセスできます。
+## オブジェクト型の標準型
+### String
+#### 文字列操作を行う。
+文字列操作には、以下のクラスがある。
+1. String
+2. StringBuffer
+3. StringBuilder
+
+目的に応じて使い分けられる。
+##### String
+
+##### StringBuffer
+マルチスレッド処理において、便利である。
+
+##### StringBuilder
+多くの実装において、最も高速である。
+通常はこのクラスを使用するとよい。
+
+
 
 ## 型
     型変換

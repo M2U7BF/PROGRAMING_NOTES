@@ -1,3 +1,10 @@
+- [標準API](#標準api)
+- [文字列操作のクラス](#文字列操作のクラス)
+      - [String](#string)
+      - [StringBuffer](#stringbuffer)
+      - [StringBuilder](#stringbuilder)
+
+
 ## 標準API
 よく使われる標準APIを以下にまとめる。
 
@@ -50,3 +57,35 @@ java.util.zip
     ZipOutputStream	Zip形式で書き込みを行うための出力ストリーム
 
 引用：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch10/jbi_1005/
+
+## 文字列操作のクラス
+文字列操作には、以下のクラスがある。
+1. java.lang.String
+2. java.lang.StringBuffer
+3. java.lang.StringBuilder
+
+操作の仕組みが異なり、実行速度も異なる。
+
+### String
+- 文字列は可変でない。
+  - つまり、値を更新するたびに新しい変数を作成している。
+- メモリの節約となる。
+  - 他のクラスに比べ変更への準備のためのメモリ確保は不要。ただし、文字列操作をする際はメモリを浪費する。
+
+### StringBuffer
+- 文字列は可変。配列のようになっている。
+- マルチスレッドに対応している。スレッドセーフである。
+- 速い。
+
+### StringBuilder
+- 文字列は可変。配列のようになっている。
+- 単一のスレッドで動作する。
+- 最も速い。
+
+### Pythonでは
+Stringがimmutableであるという原因から、同様に、Pythonではjoin()が使われる。
+
+1. 配列に文字列を格納
+2. join()で結合
+という流れである。
+
