@@ -12,10 +12,10 @@
 - [ドメイン駆動設計 Domain Driven Design](#ドメイン駆動設計-domain-driven-design)
 - [3層アーキテクチャ](#3層アーキテクチャ)
 - [クラス依存 → インターフェイス依存](#クラス依存--インターフェイス依存)
-- [dependency injection](#dependency-injection)
-- [基本的な使い方](#基本的な使い方)
-- [インスタンスを使いたい箇所アノテーションをつける](#インスタンスを使いたい箇所アノテーションをつける)
-- [DIの動き](#diの動き)
+- [Spring DI (dependency injection)](#spring-di-dependency-injection)
+  - [基本的な使い方](#基本的な使い方)
+  - [インスタンスを使いたい箇所アノテーションをつける](#インスタンスを使いたい箇所アノテーションをつける)
+  - [DIの動き](#diの動き)
 - [Aspect Oriented Programming](#aspect-oriented-programming)
 - [form入力値に伴いレンダリングする](#form入力値に伴いレンダリングする)
 - [SpringのApplicationクラス](#springのapplicationクラス)
@@ -354,25 +354,92 @@ https://github.com/seaswalker/spring-analysis
 	複数のメソッドを共通のインターフェイスからの実装にする。
 	ポリモーフィズムにより変更部分が少なくなる(低依存)。
 
-## dependency injection
-普通は使う側のクラス内で使われるクラスのインスタンスを生成するが、
-「使う側」クラスの外から「使われる側」インスタンスを注入すること
+## Bean
+DIコンテナで管理されるコンポーネントは、Beanと言う。
 
-## 基本的な使い方
-    1 Bean登録をする
-    クラスに@Compnent, @Service, @Service, @Repository, @Bean などのアノテーションを付与する
+### Bean定義の方法
+#### Java ベースConfiguration
+@Configurationアノテーションが付与されたJava クラスに@Beanアノテーションが付与されたメソッドを使用してBean を定義する方法。Spring 3.0 から利用可能であり、最近のSpringを使ったアプリケーション開発（特にSpring Boot 以降）でよく使われる
 
-    2 インジェクションの受け口を設定する
+#### アノテーションベースConfiguration
+@Componentなどのマーカーアノテーションが付与されたクラスを「コンポーネントスキャン」という手段を用いて自動的にDI コンテナに登録する方法。
+Spring 2.5 から利用可能
 
-## インスタンスを使いたい箇所アノテーションをつける
-    @Autowired
+#### XML ベースConfiguration
+XML ファイル中の<bean> 要素のclass 属性にFQCN（完全修飾クラス名）を記述し、<constructor-arg>や<property>要素を使ってインジェクションの設定を行なう方法。Spring 登場以来の設定方法
 
-    @Autowired
-    Greet greet;
 
-## DIの動き
-    @Componentアノテーションが付与されていることから、MorningGreetクラスのインスタンスを生成します。
-    @Autowiredアノテーションに従い「使われる側」MorningGreetクラスのインスタンスが「使う側」クラスの「フィールド」greetに注入されます
+## Spring DI (dependency injection): Springのコア機能
+普通は使う側のクラス内で使われるクラスのインスタンスを生成するが、「使う側」クラスの外から「使われる側」インスタンスを注入すること。
+
+ApplicationContext
+...ApplicationContextがDIコンテナの役割を担う。
+
+### DIの役割
+各クラスが疎結合となるように設計された、インスタンス管理の仕組み。
+下記のメリットを提供している。
+1. メモリ使用の効率化
+2. クラス間の結合度を小さくする。
+
+#### 1.メモリ使用の効率化
+コードの各部分で「new」キーワードを用いてクラスをインスタンス化すると、
+アクセスのたびにインスタンスが生産される。
+DIコンテナにより、それが大幅に削減される。
+
+##### DIにおけるシングルトンパターン
+インスタンス化に関して、Springは基本的にシングルトンパターンを採用している。
+各クラスのインスタンスはSpring FWが管理し、各クラスは一度だけインスタンス化される。
+
+[シングルトンパターンのメリット](https://zenn.dev/morinokami/books/learning-patterns-1/viewer/singleton-pattern)
+
+
+#### 2.クラス間の結合度を小さくする。（開発効率、保守性を高める。）
+クラスの結合度とは、モジュール（コンポーネント）同士がどのくらい関係しているかという度合いです。
+たとえば，あるモジュールが変更された場合，別のモジュールにどの程度影響を及ぼすかということが１つの尺度になります。 関係の度合いが大きいほど，他に及ぼす影響も大きくなります。
+
+このクラスの結合度を小さくすると下記のメリットがあります。
+1. 開発効率があがる。
+   1. すべてのクラスが完成していなくても単体テストができる。
+   2. 単体テストのときに、Mockクラスを使いやすい。
+2. 保守性が高まる。
+   1. 1つのクラスを変更した際の影響範囲が小さくなります。
+   2. 実装クラスを容易に変更できる。（インターフェイスなどを自動で探し出し注入してくれる）
+
+### DIの仕組み
+下記の流れとなる。
+1. 対象のコンポーネント（クラス）をBeanとして登録する。
+2. 注入（Injection）の受け口を設定する。
+
+#### 1. 対象のコンポーネント（クラス）をBeanとして登録する。
+大前提として、SpringではコンポーネントをBeanという名前で管理する。
+管理の流れは以下となる。
+
+![Alt text](b4e2c9de-2281-e8fd-768a-8173948eaa30.jpeg)
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fqiita.com%2Fkawakawaryuryu%2Fitems%2Fc7d71fd56c497e283198&psig=AOvVaw049pvQmririZtKZ96OEnEW&ust=1698283317725000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMCi9MOEkIIDFQAAAAAdAAAAABAD
+
+
+@Component, @Controller, @RestController, @Service, @Repository
+といったアノテーションでBeanを登録する。
+
+
+#### 2. 注入（Injection）の受け口を設定する。
+@Autowiredを用いる。
+
+機能は以下となる。
+> Spring の依存性注入機能によってオートワイヤーされるように、
+> コンストラクター、フィールド、setter メソッド、構成メソッドをマークします。
+
+外部の依存関係が存在する、フィールドやメソッドで@Autowiredを用いて、
+注入の受け口を設定する。
+
+
+### DIを使用しないコンポーネント
+インスタンス化のタイミングをコントロールしたいので、
+**インスタンス変数を保持するクラス**はBeanとして登録すべきではない。
+- DTO
+- Entity
+- その他データ保持オブジェクト
+
 
 ## Aspect Oriented Programming
 	Spring Framework は様々な共通機能を AOP で提供する
