@@ -82,3 +82,10 @@ java.util.zip
 - 単一のスレッドで動作する。
 - 最も速い。
 
+### Pythonでは
+Stringがimmutableであるという原因から、同様に、Pythonではjoin()が使われる。
+
+1. 配列に文字列を格納
+2. join()で結合
+という流れである。
+
