@@ -423,7 +423,8 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fqiita.com%2Fkawakawaryuryu%2Fi
 
 
 #### 2. 注入（Injection）の受け口を設定する。
-@Autowiredを用いる。
+型を指定する場合、@Autowiredを用いる。
+名前を指定する場合、@Resourceを用いる。
 
 機能は以下となる。
 > Spring の依存性注入機能によってオートワイヤーされるように、
@@ -441,23 +442,41 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fqiita.com%2Fkawakawaryuryu%2Fi
 - その他データ保持オブジェクト
 
 
-## Aspect Oriented Programming
-	Spring Framework は様々な共通機能を AOP で提供する
-	提供される機能は「アノテーション」をクラスやメソッドに付与することで利用できます
-	メソッド呼び出し時にクラス間に割り込む形で処理を管理する。
+## Spring AOP (Aspect Oriented Programming): Springコア機能
+Spring Framework は様々な共通機能を AOP で提供する
+提供される機能は「アノテーション」をクラスやメソッドに付与することで利用できます
+メソッド呼び出し時にクラス間に割り込む形で処理を管理する。
 
-	Advice ･･･横断的関心事の実装(メソッド)。ログ出力やトランザクション制御などです
-	Aspect ･･･Adviceをまとめたもの(クラス)です
-	JointPoint ･･･Adviceを中心的関心事に適用するタイミング。メソッド(コンストラクタ)の実行前、メソッド(コンストラクタ)の実行後など、実行されるタイミングです
-	Pointcut ･･･Adviceを挿入できる場所。例えば、メソッド名がgetで始まる時だけ処理するなど条件を定義できます
-	Interceptor ･･･処理の制御をインターセプト(横取り)する為の仕組み、プログラムのことです。SpringFrameworkではインターセプトという仕組みでAdviceを中心的関心事に追加したように見せます
-	Target ･･･Adviceが挿入される対象のことです
+Advice ･･･横断的関心事の実装(メソッド)。ログ出力やトランザクション制御などです
+Aspect ･･･Adviceをまとめたもの(クラス)です
+JointPoint ･･･Adviceを中心的関心事に適用するタイミング。メソッド(コンストラクタ)の実行前、メソッド(コンストラクタ)の実行後など、実行されるタイミングです
+Pointcut ･･･Adviceを挿入できる場所。例えば、メソッド名がgetで始まる時だけ処理するなど条件を定義できます
+Interceptor ･･･処理の制御をインターセプト(横取り)する為の仕組み、プログラムのことです。SpringFrameworkではインターセプトという仕組みでAdviceを中心的関心事に追加したように見せます
+Target ･･･Adviceが挿入される対象のことです
 
-	Adviceを作成する
-		Pointcut 式を使用
+Adviceを作成する
+	Pointcut 式を使用
 
-		例) execution指示子
-		execution(戻り値の型 パッケージ.クラス.メソッド(引数))
+	例) execution指示子
+	execution(戻り値の型 パッケージ.クラス.メソッド(引数))
+
+### 使用されている機能の例
+トランザクション管理機能
+@Transactionalで管理される機能で、用いられている。
+
+認可処理
+Spring SecurityのPreAuthorize
+
+キャッシュ処理
+@org.springframework.cache.annotation.Cacheable
+
+非同期処理
+@org.springframework.scheduling.annotation.Async
+
+リトライ処理
+ます。@org.
+@springframework.retry.annotation.Retryable
+
 
 ## form入力値に伴いレンダリングする
 	コントローラーのメソッドにおいて、インスタンスを引数に渡す。
