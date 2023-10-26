@@ -12,11 +12,22 @@
 - [ドメイン駆動設計 Domain Driven Design](#ドメイン駆動設計-domain-driven-design)
 - [3層アーキテクチャ](#3層アーキテクチャ)
 - [クラス依存 → インターフェイス依存](#クラス依存--インターフェイス依存)
-- [Spring DI (dependency injection)](#spring-di-dependency-injection)
-  - [基本的な使い方](#基本的な使い方)
-  - [インスタンスを使いたい箇所アノテーションをつける](#インスタンスを使いたい箇所アノテーションをつける)
-  - [DIの動き](#diの動き)
-- [Aspect Oriented Programming](#aspect-oriented-programming)
+- [Bean](#bean)
+	- [Bean定義の方法](#bean定義の方法)
+		- [Java ベースConfiguration](#java-ベースconfiguration)
+		- [アノテーションベースConfiguration](#アノテーションベースconfiguration)
+		- [XML ベースConfiguration](#xml-ベースconfiguration)
+- [Spring DI (dependency injection): Springのコア機能](#spring-di-dependency-injection-springのコア機能)
+	- [DIの役割](#diの役割)
+		- [1.メモリ使用の効率化](#1メモリ使用の効率化)
+			- [DIにおけるシングルトンパターン](#diにおけるシングルトンパターン)
+		- [2.クラス間の結合度を小さくする。（開発効率、保守性を高める。）](#2クラス間の結合度を小さくする開発効率保守性を高める)
+	- [DIの仕組み](#diの仕組み)
+		- [1. 対象のコンポーネント（クラス）をBeanとして登録する。](#1-対象のコンポーネントクラスをbeanとして登録する)
+		- [2. 注入（Injection）の受け口を設定する。](#2-注入injectionの受け口を設定する)
+	- [DIを使用しないコンポーネント](#diを使用しないコンポーネント)
+- [Spring AOP (Aspect Oriented Programming): Springコア機能](#spring-aop-aspect-oriented-programming-springコア機能)
+	- [使用されている機能の例](#使用されている機能の例)
 - [form入力値に伴いレンダリングする](#form入力値に伴いレンダリングする)
 - [SpringのApplicationクラス](#springのapplicationクラス)
 - [画面遷移の際に値を保持する](#画面遷移の際に値を保持する)
@@ -53,6 +64,7 @@ https://github.com/shuzheng/zheng
 https://github.com/doocs/source-code-hunter
 https://github.com/seaswalker/spring-analysis
 
+公式ドキュメント: https://spring.pleiades.io/spring-framework/reference/
 
 ## Springの構造
 	実態はコンテナでありBeanのfactoryとして動作する
