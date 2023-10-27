@@ -506,8 +506,7 @@ Spring SecurityのPreAuthorize
 @org.springframework.scheduling.annotation.Async
 
 リトライ処理
-ます。@org.
-@springframework.retry.annotation.Retryable
+@org.@springframework.retry.annotation.Retryable
 
 
 ## form入力値に伴いレンダリングする
