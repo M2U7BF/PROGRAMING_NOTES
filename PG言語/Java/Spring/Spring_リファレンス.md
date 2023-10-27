@@ -280,6 +280,23 @@ form入力値に伴いレンダリングする
 	メソッドの戻り値をBeanにする
 	@Beanを使う
 
+
+## ログ
+以下の記述で簡単に使用できる。
+```
+public class MyBean {
+	private final Log log = LogFactory.getLog(getClass());
+    // ...
+}
+```
+
+```
+log.info("message")
+```
+
+[Spring, ログの公式リファレンス](https://spring.pleiades.io/spring-framework/reference/core/spring-jcl.html)
+
+
 ## 画面遷移の際に値を保持する
 	入力画面、確認画面、完了画面がそれぞれ１ページで構成されるような場合
 	htmlフォームのhiddenを使う  (引用:https://terasolunaorg.github.io/guideline/public_review/ArchitectureInDetail/SessionManagement.html#sessionattributes)
