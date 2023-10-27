@@ -512,13 +512,11 @@ Spring SecurityのPreAuthorize
 @org.@springframework.retry.annotation.Retryable
 
 
-## form入力値に伴いレンダリングする
-	コントローラーのメソッドにおいて、インスタンスを引数に渡す。
-	クラスはcom/example/hogeに作成。
-	@GetMapping("/")
-    public String showForm(PersonForm personForm) {
-        return "form";
-    }
+## nullセーフ
+https://spring.pleiades.io/spring-framework/reference/core/null-safety.html
+
+Springではnull 安全性をサポートする。
+
 
 ## SpringのApplicationクラス
 	実行クラスの設定

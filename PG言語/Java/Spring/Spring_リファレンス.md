@@ -1,14 +1,29 @@
-(https://gist.github.com/kenta-polyglot/bc0657525f37cd50c9f9399a4f86b04a)
-詳しくて役立つ : https://qiita.com/opengl-8080/items/eb3bf3b5301bae398cc2
+- [参考リポジトリ](#参考リポジトリ)
+- [Spring MVC](#spring-mvc)
+- [dependency injection](#dependency-injection)
+- [Aspect Oriented Programming](#aspect-oriented-programming)
+- [SpringのApplicationクラス](#springのapplicationクラス)
+- [Java Config](#java-config)
+- [画面遷移の際に値を保持する](#画面遷移の際に値を保持する)
+- [メソッドを定期的に実行する](#メソッドを定期的に実行する)
+- [Maven でプロジェクトを構築する](#maven-でプロジェクトを構築する)
+- [DBを扱う](#dbを扱う)
+- [DBを操作する](#dbを操作する)
+- [認証](#認証)
+- [バリデーション](#バリデーション)
+- [各種ファイル](#各種ファイル)
+- [アノテーション](#アノテーション)
 
-クラス構造
-	参考リポジトリ
-		大規模システム
-			https://github.com/macrozheng/mall
-		spring bootの各機能をまとめたリポジトリ
-			https://github.com/xkcoding/spring-boot-demo
-		その他
-			https://github.com/elunez/eladmin
+
+## 参考リポジトリ
+大規模システム
+https://github.com/macrozheng/mall
+
+spring bootの各機能をまとめたリポジトリ
+https://github.com/xkcoding/spring-boot-demo
+
+その他
+https://github.com/elunez/eladmin
 
 https://github.com/linlinjava/litemall/tree/master/litemall-vue
 https://github.com/YunaiV/ruoyi-vue-pro
@@ -18,77 +33,8 @@ https://github.com/doocs/source-code-hunter
 https://github.com/seaswalker/spring-analysis
 
 
-Springの構造
-	実態はコンテナでありBeanのfactoryとして動作する
 
-Springのコンテナ
-	BeanFactoryコンテナ
-	ApplicationContextコンテナ
-
-	BeanFactoryインターフェースは、Beanのインスタンス化、構成、ライフサイクルの管理を行うための高度な構成メカニズムを提供する最もシンプルなコンテナであり、
-	ApplicationContextの親インターフェースである基本的なIoCコンテナを表します。
-	IoC Container ･･･Spring Frameworkの中核。
-		オブジェクトを作成し、依存関係を設定し、組み立て、そのライフサイクル全体を管理します。
-		コンテナは、依存性注入（DI）を使用して、アプリケーションを構成するコンポーネントを管理します。
-		コンテナは、設定ファイル（XML）、Javaコード、Javaアノテーション、Java POJOクラスから、オブジェクトに関する情報を取得します。
-		これらのオブジェクトはBeanと呼ばれます。Javaオブジェクトとそのライフサイクルの制御は開発者が行うものではないので、Inversion Of Controlという名前になっています。
-		https://www.geeksforgeeks.org/spring-ioc-container/
-
-	Application context ･･･
-		アプリケーションの設定を行うためのセントラルインターフェイス。
-		BeanFactoryを間接的に継承する
-
-Spring framework の動き方
-	コンポーネントスキャン
-		「起動時」に対象プロジェクトのパッケージをすべてスキャンします
-		@Componentのついたクラスを見つけたらインスタンス化しDIコンテナに保存する
-		@Repository,@Service...は@Componentをつけたことと同じになりインスタンス化される
-	インスタンス生成アノテーションが付与されているクラスを抽出し(図 3.25)、抽出したクラスをインスタンス化します
-
-factory method pattern
-	オブジェクトを作成するために、Java インターフェースまたは抽象クラスであるインターフェイスを使う
-	直接newする(コンストラクタを呼び出す)のではなく、メソッドを呼び出すことで密結合をへらす
-
-	例)
-	<<interface>> Vehiclefactory
-		+ createVehicle(): Vehicle
-	AirplaneFactory Aireplaneへ依存 実現
-		+ createVehicle(): Aireplane
-	BoatFactory Boatへ依存 実現
-		+ createVehicle(): Boat
-	<<interface>> Vehicle
-		+ drive(): void
-	Aireplane 実現
-		+ drive(): void
-	Boat 実現
-		+ drive(): void
-
-フレームワークの構造
-	モジュールに分かれており、構成モデルと依存性注入メカニズムを含むコアコンテナーのモジュールが中核となる
-
-リソースコントローラー
-	HTTP リクエストはコントローラーによって処理されます
-	@RestController
-		RESTful Webサービスの作成を簡素化するために、導入されました。
-		これは、 @Controllerと@ResponseBodyを組み合わせた便利なアノテーションであり、コントローラークラスのすべてのリクエスト処理メソッドに@ResponseBodyアノテーションを付ける必要がありません。
-
-POJO（Plain Old Java Object）
-	通常のJavaオブジェクトであり、Java言語仕様によって強制されるもの以外の特別な制限に拘束されず、クラスパスを必要としません。
-	POJOは、プログラムの可読性と再利用性を高めるために使用されます。
-	POJOは、記述と理解が容易なため、最も受け入れられています。
-
-Spring devtools
-	Automatic Restart ･･･Spring boot を自動で再起動してくれる。
-	Hot swapping ･･･自動でhtmlファイルの変更を反映
-		application.propertiesに追記
-
-MVC
-	Controller
-		@Controllerを使い登録する
-		クライアントからの入力を View から受け取り、それをもとに Model に指示を伝えます。
-		その後、Model から受け取った値を View に伝え、見た目に反映させます。
-
-Spring MVC
+## Spring MVC
 	構造 : https://terasolunaorg.github.io/guideline/public_review/Overview/SpringMVCOverview.html#:~:text=Overview%20of%20Spring%20MVC%20Processing%20Sequence%C2%B6
 	DispatcherServlet ･･･すべてのリクエストを受信するフロントコントローラです
 
@@ -272,53 +218,8 @@ Spring MVC
 				response.sendRedirect("some-url");
 			}
 
-ドメイン駆動設計 Domain Driven Design
-	アプリケーション層 @Controller
-		クライアントとのデータ入出力を制御する
-		Controller
-			リクエストを処理にマッピングし、結果をViewに渡すという制御を行います。
-			主処理は 「Controller」内では行わず「ドメイン層」の「Service」を呼び出します。
-		Form
-			画面のフォームを表現します。画面からの入力値をControllerに渡す、Controllerから 画面に結果を出力する際に使用します。
-			ドメイン層がアプリケーション層に依存しないように、Formから Domain Objectへの変換やDomain ObjectからFormへの変換は、アプリケーション層で行う必要があります。
-		View
-			見た目、画面です
 
-	ドメイン層 @Service
-		アプリケーションの中核となる層であり、「業務処理」を提供 する
-
-		Domain Object ･･･サービス処理を実行する上で必要な資源です(Entityなど)。
-		Service ･･･アプリケーションの「サービス処理」そのものです。
-		Repository ･･･インターフェースです。「データベースへのデータ操作」定義のみ記述します(実装内容は記述しません)。
-
-	インフラストラクチャ層 @Repository
-		インフラストラクチャ層は、データベースへのデータ永続化などを担う
-		永続化･･･データを不揮発性の記憶装置に移すこと。また、インスタンスの状態を半永久的に保存すること。
-		RepositoryImpl
-			ドメイン層で定めたRepositoryの実装クラスです。O/R MapperがRepositoryの実装クラスを作成する場合もあります。
-		O/R Mapper
-			「O:オブジェクト」と「R:リレーショナルデータベース」とのデータをマッピングします。
-
-	サブ処理 @Component
-		Controller,Service,Repositoryに属さないクラス
-
-3層アーキテクチャ
-	プレゼンテーション層 @Controller
-		リクエストを受け取る
-		レスポンスを返す
-	ビジネスロジック層 (中心) @Service
-		処理
-	データアクセス層 @Repository
-		DBに指示をだす
-		DBからデータをうけとる
-	サブ処理 @Component
-		Controller,Service,Repositoryに属さないクラス
-
-クラス依存 → インターフェイス依存
-	複数のメソッドを共通のインターフェイスからの実装にする。
-	ポリモーフィズムにより変更部分が少なくなる(低依存)。
-
-dependency injection
+## dependency injection
 	普通は使う側のクラス内で使われるクラスのインスタンスを生成するが、
 	「使う側」クラスの外から「使われる側」インスタンスを注入すること
 
@@ -338,7 +239,7 @@ dependency injection
 		@Componentアノテーションが付与されていることから、MorningGreetクラスのインスタンスを生成します。
 		@Autowiredアノテーションに従い「使われる側」MorningGreetクラスのインスタンスが「使う側」クラスの「フィールド」greetに注入されます
 
-Aspect Oriented Programming
+## Aspect Oriented Programming
 	Spring Framework は様々な共通機能を AOP で提供する
 	提供される機能は「アノテーション」をクラスやメソッドに付与することで利用できます
 	メソッド呼び出し時にクラス間に割り込む形で処理を管理する。
@@ -364,7 +265,7 @@ form入力値に伴いレンダリングする
         return "form";
     }
 
-SpringのApplicationクラス
+## SpringのApplicationクラス
 	実行クラスの設定
 
 	@SpringBootApplication ･･･ クラスに以下をすべて追加する
@@ -375,11 +276,11 @@ SpringのApplicationクラス
 	@SpringBootApplication
 	public class SampleApplication { ...
 
-Java Config
+## Java Config
 	メソッドの戻り値をBeanにする
 	@Beanを使う
 
-画面遷移の際に値を保持する
+## 画面遷移の際に値を保持する
 	入力画面、確認画面、完了画面がそれぞれ１ページで構成されるような場合
 	htmlフォームのhiddenを使う  (引用:https://terasolunaorg.github.io/guideline/public_review/ArchitectureInDetail/SessionManagement.html#sessionattributes)
 
@@ -489,7 +390,7 @@ Java Config
 		Http Sessionを直接使う
 			ControllerでHttpSessionをインジェクトして使う
 
-メソッドを定期的に実行する
+## メソッドを定期的に実行する
 
 	@Scheduled
 		特定のメソッドがいつ実行されるかを定義し、スケジュールの対象にする。
@@ -509,11 +410,11 @@ Java Config
 	@EnableScheduling
 	public class SampleApplication { ...
 
-Maven でプロジェクトを構築する
+## Maven でプロジェクトを構築する
 	pom.xml ･･･ プロジェクトの名前、バージョン、外部ライブラリに対する依存関係を提供します。
 
 
-DBを扱う
+## DBを扱う
 	MySQLを設定する
 		spring.jpa.hibernate.ddl-auto=update
 		spring.datasource.url=jdbc:mysql:ここにlocalhost以下を入力(例 //localhost:3306/mydb)
@@ -565,7 +466,7 @@ DBを扱う
 	トランザクションを管理する
 		「@Transactional」 アノテーションを付与することで、データベースアクセス処理メソッドが正常終了したらトラン ザクションをコミットし、例外がスローされた場合はロールバックを行います。
 
-DBを操作する
+## DBを操作する
 	Domain Objectを作る
 	Entityクラスを作る。
 	フィールドがカラムになる
@@ -664,7 +565,7 @@ DBを操作する
 	メソッドに @Transactional アノテーションを付与する
 	メソッドが呼ばれたタイミング(正確にはメソッド開始前)にトランザクションが開始され、対象のメソッドが正常終了した場合は「コミット」、例外で終了した場合は「ロールバック」されます。
 
-認証
+## 認証
 	Spring Security
 		依存関係に追加。
 		gradle →
@@ -736,7 +637,7 @@ DBを操作する
 			***thymeleafの記述
 			<p th:if="${#fields.hasErrors('passwordValid')}" th:errors="*{passwordValid}"></p> //isPasswordValidを変数化しpasswordValidとすることでメッセージの表示を行えます。
 
-バリデーション
+## バリデーション
 	単項目チェック
 	入力項目 1 つ 1 つに対して、設定する「入力チェック」機能です
 
@@ -833,9 +734,9 @@ DBを操作する
 	addViewControllers() ･･･パスのマッピング
 	setViewName ･･･ロードされるjspのマッピング･
 
-各種ファイル
+## 各種ファイル
 	application.yml ･･･アプリケーション構成設定が含まれています。いくつかの組み込みのアプリケーションプロパティがあり、カスタムプロパティを作成できます。
 
 
-アノテーション
+## アノテーション
 	javax.annotation.processingパッケージのAPIにより処理される
