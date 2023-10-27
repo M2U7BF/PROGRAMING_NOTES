@@ -57,14 +57,17 @@
 		その他
 			https://github.com/elunez/eladmin
 
-https://github.com/linlinjava/litemall/tree/master/litemall-vue
-https://github.com/YunaiV/ruoyi-vue-pro
-https://github.com/yudaocode/SpringBoot-Labs
-https://github.com/shuzheng/zheng
-https://github.com/doocs/source-code-hunter
-https://github.com/seaswalker/spring-analysis
+			https://github.com/linlinjava/litemall/tree/master/litemall-vue
+			https://github.com/YunaiV/ruoyi-vue-pro
+			https://github.com/yudaocode/SpringBoot-Labs
+			https://github.com/shuzheng/zheng
+			https://github.com/doocs/source-code-hunter
+			https://github.com/seaswalker/spring-analysis
 
 公式ドキュメント: https://spring.pleiades.io/spring-framework/reference/
+
+仕様の解説は下記も参考になる。
+GeeksforGeeks: https://www.geeksforgeeks.org/spring-ioc-container/
 
 ## Springの構造
 	実態はコンテナでありBeanのfactoryとして動作する
