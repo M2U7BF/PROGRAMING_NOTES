@@ -239,6 +239,15 @@ https://github.com/seaswalker/spring-analysis
 		@Componentアノテーションが付与されていることから、MorningGreetクラスのインスタンスを生成します。
 		@Autowiredアノテーションに従い「使われる側」MorningGreetクラスのインスタンスが「使う側」クラスの「フィールド」greetに注入されます
 
+### DIのベストプラクティス
+DIの方法は下記のとおり。
+1. コンストラクタインジェクション
+2. Setterインジェクション
+3. フィールドインジェクション
+
+コンストラクタインジェクションが唯一、代入先をイミュータブルにできるので推奨される。
+
+
 ## Aspect Oriented Programming
 	Spring Framework は様々な共通機能を AOP で提供する
 	提供される機能は「アノテーション」をクラスやメソッドに付与することで利用できます
