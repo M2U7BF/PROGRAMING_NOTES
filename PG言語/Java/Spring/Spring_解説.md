@@ -18,6 +18,7 @@
 		- [アノテーションベースConfiguration](#アノテーションベースconfiguration)
 		- [XML ベースConfiguration](#xml-ベースconfiguration)
 - [Spring DI (dependency injection): Springのコア機能](#spring-di-dependency-injection-springのコア機能)
+	- [IoC（Inversion of Control）](#iocinversion-of-control)
 	- [DIの役割](#diの役割)
 		- [1.メモリ使用の効率化](#1メモリ使用の効率化)
 			- [DIにおけるシングルトンパターン](#diにおけるシングルトンパターン)
@@ -28,7 +29,7 @@
 	- [DIを使用しないコンポーネント](#diを使用しないコンポーネント)
 - [Spring AOP (Aspect Oriented Programming): Springコア機能](#spring-aop-aspect-oriented-programming-springコア機能)
 	- [使用されている機能の例](#使用されている機能の例)
-- [form入力値に伴いレンダリングする](#form入力値に伴いレンダリングする)
+- [nullセーフ](#nullセーフ)
 - [SpringのApplicationクラス](#springのapplicationクラス)
 - [画面遷移の際に値を保持する](#画面遷移の際に値を保持する)
 - [メソッドを定期的に実行する](#メソッドを定期的に実行する)
@@ -385,7 +386,7 @@ XML ファイル中の<bean> 要素のclass 属性にFQCN（完全修飾クラ�
 
 
 ## Spring DI (dependency injection): Springのコア機能
-普通は使う側のクラス内で使われるクラスのインスタンスを生成するが、「使う側」クラスの外から「使われる側」インスタンスを注入すること。
+普通は使う側のクラス内で使われるクラスのインスタンスを生成するが、「使う側」クラスの外から「使われる側」インスタンスを注入(自動的に代入)すること。
 
 IoC コンテナーの基盤となるパッケージ。
 - org.springframework.beans
@@ -456,6 +457,21 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fqiita.com%2Fkawakawaryuryu%2Fi
 @Component, @Controller, @RestController, @Service, @Repository
 といったアノテーションでBeanを登録する。
 
+##### SpringBootのコンポーネントスキャン
+@SpringBootAplicationのアノテーションが、下記を含む。
+- @Configuration
+- @ComponentScan
+- @EnableAutoConfiguration
+
+```
+@SpringApplication
+public class HogeApplication {
+	public static void main(String[] args) {
+		// run()はApplicationContextをreturnする。
+		SpringApplication.run(HogeApplication.class);
+	}
+}
+```
 
 #### 2. 注入（Injection）の受け口を設定する。
 型を指定する場合、@Autowiredを用いる。
@@ -512,7 +528,16 @@ Spring SecurityのPreAuthorize
 @org.@springframework.retry.annotation.Retryable
 
 
-## nullセーフ
+## プロキシ : Springコア機能
+本来BeanとなるはずだったインスタンスをラップしたBean。
+
+### プロキシの役割
+1. AOP
+2. スコープの違いの吸収
+3. Beanをシングルトンに保つ
+
+
+## nullセーフ : Springコア機能
 https://spring.pleiades.io/spring-framework/reference/core/null-safety.html
 
 Springではnull 安全性をサポートする。

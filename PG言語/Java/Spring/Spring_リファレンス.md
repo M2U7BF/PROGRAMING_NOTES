@@ -239,6 +239,15 @@ https://github.com/seaswalker/spring-analysis
 		@Componentアノテーションが付与されていることから、MorningGreetクラスのインスタンスを生成します。
 		@Autowiredアノテーションに従い「使われる側」MorningGreetクラスのインスタンスが「使う側」クラスの「フィールド」greetに注入されます
 
+### DIのベストプラクティス
+DIの方法は下記のとおり。
+1. コンストラクタインジェクション
+2. Setterインジェクション
+3. フィールドインジェクション
+
+コンストラクタインジェクションが唯一、代入先をイミュータブルにできるので推奨される。
+
+
 ## Aspect Oriented Programming
 	Spring Framework は様々な共通機能を AOP で提供する
 	提供される機能は「アノテーション」をクラスやメソッドに付与することで利用できます
@@ -279,6 +288,23 @@ form入力値に伴いレンダリングする
 ## Java Config
 	メソッドの戻り値をBeanにする
 	@Beanを使う
+
+
+## ログ
+以下の記述で簡単に使用できる。
+```
+public class MyBean {
+	private final Log log = LogFactory.getLog(getClass());
+    // ...
+}
+```
+
+```
+log.info("message")
+```
+
+[Spring, ログの公式リファレンス](https://spring.pleiades.io/spring-framework/reference/core/spring-jcl.html)
+
 
 ## 画面遷移の際に値を保持する
 	入力画面、確認画面、完了画面がそれぞれ１ページで構成されるような場合
