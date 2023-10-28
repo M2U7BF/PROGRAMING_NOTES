@@ -116,6 +116,31 @@ Javaにおける入出力の方法は以下である。
             array.add(obj)
             array.add(index,obj)
 
+Set
+Map
+
+### Collection系クラスの使い方
+Collectionは様々なクラスのオブジェクトに対応するために、ジェネリクス型（総称型）で定義されている。
+使用時はジェネリクス型に対し、クラスを宣言し用いる必要がある。
+```
+ArrayList<String> list = new ArrayList<>();
+HashSet<String> set = new HashSet<>();
+HashMap<Integer, String> map = new HashMap<>();
+```
+
+右辺で型を指定しなくても良い。
+型推論という機能で、コンパイル時に自動で補完される。
+
+### ArrayList
+#### 初期化
+初期化時はより汎用的なList型に格納する。
+```
+List<String> list = new ArrayList<>();
+```
+
+ArrayListやLinkedListはListインタフェースを実装しているので、インスタンスはList型変数に代入できる。
+こうしておけば、ArrayListからLinkedListなど、他の型への変更が簡単になる。
+将来の変更を容易にするための書き方だ。
 
 
 ## 繰り返し
@@ -282,6 +307,15 @@ Javaにおける入出力の方法は以下である。
             timestamp → calendar
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(timestamp.getTime());
+
+### プリミティブ型
+#### ボックス化（プリミティブ型をオブジェクトとして扱う）
+プリミティブ型の値をオブジェクトとして扱うために、Javaではラッパークラスが用意されている。
+Java5からオートボクシングという機能が追加され、この互換が自動的に行われるようになった。
+
+boxing（ボックス化）とは、プリミティブ型をオブジェクト型に変換することを指す。
+https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E5%8C%96
+
 
 ## クラス
     コンストラクタ
