@@ -13,9 +13,12 @@
   - [各手法の概説](#各手法の概説)
   - [高速な方法](#高速な方法)
 - [コレクション Collection](#コレクション-collection)
-  - [Collection系クラスの使い方](#collection系クラスの使い方)
   - [ArrayList](#arraylist)
     - [初期化](#初期化)
+  - [LinkedList](#linkedlist)
+  - [Collection系クラスの使い方](#collection系クラスの使い方)
+    - [配列をListに変換する。](#配列をlistに変換する)
+    - [配列をListに変換する。(不変リスト)](#配列をlistに変換する不変リスト)
 - [繰り返し](#繰り返し)
 - [ラムダ式](#ラムダ式)
 - [ジェネリクス](#ジェネリクス)
@@ -128,17 +131,6 @@ Javaにおける入出力の方法は以下である。
 Set
 Map
 
-### Collection系クラスの使い方
-Collectionは様々なクラスのオブジェクトに対応するために、ジェネリクス型（総称型）で定義されている。
-使用時はジェネリクス型に対し、クラスを宣言し用いる必要がある。
-```
-ArrayList<String> list = new ArrayList<>();
-HashSet<String> set = new HashSet<>();
-HashMap<Integer, String> map = new HashMap<>();
-```
-
-右辺で型を指定しなくても良い。
-型推論という機能で、コンパイル時に自動で補完される。
 
 ### ArrayList
 #### 初期化
@@ -155,6 +147,34 @@ ArrayListやLinkedListはListインタフェースを実装しているので、
 ### LinkedList
 要素を参照するシーンではArrayListが適している。
 挿入や削除が多いシーンではLinkedListが適している。
+
+
+### Collection系クラスの使い方
+Collectionは様々なクラスのオブジェクトに対応するために、ジェネリクス型（総称型）で定義されている。
+使用時はジェネリクス型に対し、クラスを宣言し用いる必要がある。
+```
+ArrayList<String> list = new ArrayList<>();
+HashSet<String> set = new HashSet<>();
+HashMap<Integer, String> map = new HashMap<>();
+```
+
+右辺で型を指定しなくても良い。
+型推論という機能で、コンパイル時に自動で補完される。
+
+
+#### 配列をListに変換する。
+Arrays.asList()を用いる。
+配列をListのように扱うことができる。
+```
+String[] str = { "Windows", "Linux", "macOS" };
+List<String> list = Arrays.asList(str);
+```
+
+#### 配列をListに変換する。(不変リスト)
+List.of()で作成したリストは、要素の追加、削除ができない。
+```
+List<String> list = List.of("hoge", "fuga");
+```
 
 
 ## 繰り返し
