@@ -308,14 +308,6 @@ ArrayListやLinkedListはListインタフェースを実装しているので、
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(timestamp.getTime());
 
-### プリミティブ型
-#### ボックス化（プリミティブ型をオブジェクトとして扱う）
-プリミティブ型の値をオブジェクトとして扱うために、Javaではラッパークラスが用意されている。
-Java5からオートボクシングという機能が追加され、この互換が自動的に行われるようになった。
-
-boxing（ボックス化）とは、プリミティブ型をオブジェクト型に変換することを指す。
-https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E5%8C%96
-
 
 ## クラス
     コンストラクタ
