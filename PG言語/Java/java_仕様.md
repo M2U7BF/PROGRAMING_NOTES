@@ -1,8 +1,9 @@
 - [標準API](#標準api)
 - [文字列操作のクラス](#文字列操作のクラス)
-      - [String](#string)
-      - [StringBuffer](#stringbuffer)
-      - [StringBuilder](#stringbuilder)
+  - [String](#string)
+  - [StringBuffer](#stringbuffer)
+  - [StringBuilder](#stringbuilder)
+  - [Pythonでは](#pythonでは)
 
 
 ## 標準API
@@ -57,6 +58,28 @@ java.util.zip
     ZipOutputStream	Zip形式で書き込みを行うための出力ストリーム
 
 引用：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch10/jbi_1005/
+
+## コレクション（Collection）
+List, Set, Map
+
+### 各クラスの意味
+コレクション系のクラスに使われている Hash, Linked, Tree という接頭辞は、それぞれ特定の機能を表しています。
+Hashは(ハッシュアルゴリズムによる) 検索機能、 Linkedは (リストアルゴリズムによる) 入力順序の保存機能、 Treeはソート機能 (並べ替え機能)です。
+
+### 主なクラス
+主なクラスは以下である。
+1. List
+   1. ArrayList ...サイズが自動的に拡張する配列。 配列のように、 同じ要素を重複して格納でき、 格納した順序で取り出せる ( 並び順が保存される)。
+   2. LinkedList ...上記に加えて、 要素の挿入や削除の効率がよい
+2. Set
+   1. HashSet ...同じ要素を重複して格納できない。 要素の並び順は不定。
+   2. LinkedHashSet ...重複不可で、格納した順番で取り出せる。
+   3. TreeSet ...重複不可で、ソートした状態で取り出せる。
+3. Map
+   1. HashMap ...キーと値をペアで格納し、 キーで検索できる。 要素の並び順不定。
+   2. LinkedHashMap ...検索でき、かつ格納した順番で取り出せる。
+   3. TreeMap ...検索でき、かつキーでソートした状態で取り出せる
+
 
 ## 文字列操作のクラス
 文字列操作には、以下のクラスがある。

@@ -43,18 +43,54 @@ Javaプログラムでも、対象のクラスを起動した時、アクセス�
     データの流れとその通り道
     データの受け渡しを抽象化したものです。あらゆるデータの入出力における基本的な概念です。
 
-### テキストデータの操作
+### テキストデータの読み取り（Reader）
 java.ioパッケージの場合、Readerクラスを用いる。
 
-#### 簡単な初期化方法
+#### 簡単なリーダーの初期化方法
 java.nioパッケージを用いると、Buffer機能を追加したリーダーを簡単に初期化できる。
 ```
 BufferedReader br = Files.newBufferdReader();
 ```
 
-#### 旧来の方法
+旧来の方法は、ブラウザ参照。
+
+#### リソース付きtry文 (try-with-resources文)
+Readerクラスでは最後にメモリを開放するclose()を実行する。
+旧来はfinallyブロックが必要であったが、try-with-resource文で不要となった。
 ```
+try(BufferedReader br = Files.newBufferdReader();){
+    // 処理
+}
+catch(){ // 例外処理
+    // ...
+}
 ```
+
+リソースへアクセスするオブジェクトを()内に書くので、try-with-resourceと呼ばれる。
+
+### 文字列を解析する
+単純に読み取るのではなく、数字か文字列かなどを解析する必要がある場合、
+Scannerクラスを用いる。
+
+Scannerクラスはデフォルトで、全角空白も区切り文字と判定する。
+
+
+### テキストデータの書き込み（Writer）
+BufferedWriterを用いる。
+```
+try(BufferedWriter bw = Files.newBufferdWriter(path);) {
+    // 処理
+}
+catch(){ // 例外処理
+    // ...
+}
+```
+
+StandardOpenOptionで上書き、追記など、オプション指定できる。
+
+
+## オブジェクトの入出力（バイナリストリーム）
+
 
 
 ## 文字列入出力
@@ -70,15 +106,17 @@ Javaにおける入出力の方法は以下である。
 ### 高速な方法
 
 ## コレクション Collection
-    配列
+配列
     プリミティブ型を格納する
 
-    リスト
+リスト
     オブジェクトを格納する
         Java.util.ArrayList();
         追加
             array.add(obj)
             array.add(index,obj)
+
+
 
 ## 繰り返し
     拡張for文
