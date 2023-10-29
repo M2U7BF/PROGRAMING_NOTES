@@ -176,6 +176,8 @@ List.of()で作成したリストは、要素の追加、削除ができない�
 List<String> list = List.of("hoge", "fuga");
 ```
 
+#### Listをソートする。
+
 
 ## 繰り返し
     拡張for文
