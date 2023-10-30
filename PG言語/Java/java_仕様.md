@@ -3,6 +3,7 @@
   - [各クラスの意味](#各クラスの意味)
   - [主なクラス](#主なクラス)
   - [ArrayListの仕様](#arraylistの仕様)
+  - [Setの仕様](#setの仕様)
 - [文字列操作のクラス](#文字列操作のクラス)
   - [String](#string)
   - [StringBuffer](#stringbuffer)
