@@ -319,7 +319,20 @@ Arrays.stream(array)
     指定した型と同じ、またはその型のスーパークラスを表す
     List<? super Integer>
 
-## メタアノテーション ･･･アノテーションにアノテーションをつけるアノテーション
+## ログ
+下記でログを記述できる。
+```
+private final static Logger logger = Logger.getLogger(this.getClass().toString())
+```
+
+### ファイルにログを出力する
+下記参照。
+https://qiita.com/kenRp01/items/f415eb999a661e1326e2
+```
+```
+
+## メタアノテーション
+ ･･･アノテーションにアノテーションをつけるアノテーション
 
     @Target
         アノテーションを適用できるプログラム要素宣言のタイプ（クラス、インターフェース、コンストラクターなど）を指定する。
