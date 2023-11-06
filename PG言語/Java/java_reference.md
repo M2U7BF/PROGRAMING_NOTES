@@ -423,22 +423,28 @@ https://qiita.com/kenRp01/items/f415eb999a661e1326e2
 匿名クラスを使うと、インタフェースを実装したクラスの宣言と、そのインスタンスを作る処理を、1つの式として書くことができます。
 上の ②と③を一度に済ますことができ、クラスファイルを作る必要もなくなります。
 
-## ラムダ式
- - 関数型インターフェースに用いる（抽象メソッドを１つだけ持つインターフェース）。
+## 例外
+### 例外の種類
+Checked Exception (チェック例外)
+    コンパイル時例外。
+    exceptions checked at compile time. Example - IOException
 
-java.util.functionパッケージにて、典型的な関数型インターフェースが提供されている。
+Unchecked Exception (非チェック例外)
+    実行時に発覚する例外。
+    exceptions checked at run time. Example - NullPointerException
 
+Error
+    エラー。
+    It is irrecoverable. Example - OutOfMemoryError
 
-## クラス
-    コンストラクタ
-        自分自身にすでに定義されているコンストラクタを呼び出す
-            this(引数);
-        親クラスのコンストラクタを呼び出す
-            super(); //Objectクラスの継承の際に明示的に呼び出すことがあるっぽい
+### プログラムにおける主な例外の原因
+- Invalid user input
+- Device failure
+- Loss of network connection
+- Physical limitations (out-of-disk memory)
+- Code errors
+- Opening an unavailable file
 
-System.out.println
-    ArrayListを出力
-    Arrays.toString(some_array)
 
 ## 便利機能
     recordクラス    https://kamoqq.info/post/java-record-cheat-sheet/
