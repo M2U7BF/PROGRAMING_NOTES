@@ -15,6 +15,9 @@ https://www.jetbrains.com/help/idea/configuring-keyboard-and-mouse-shortcuts.htm
 ファイル内置換
     commnd+Fの後、command+R
 
+ファイルを開く
+    command+E
+
 
 ## エラー
 ### パッケージが読み込めない

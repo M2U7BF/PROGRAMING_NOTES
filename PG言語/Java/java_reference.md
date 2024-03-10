@@ -19,6 +19,14 @@
   - [Collection系クラスの使い方](#collection系クラスの使い方)
     - [配列をListに変換する。](#配列をlistに変換する)
     - [配列をListに変換する。(不変リスト)](#配列をlistに変換する不変リスト)
+    - [Listをソートする。](#listをソートする)
+  - [コレクションのストリーム](#コレクションのストリーム)
+    - [配列からストリームを作る](#配列からストリームを作る)
+    - [中間処理を行う](#中間処理を行う)
+      - [フィルターリングする](#フィルターリングする)
+    - [終端処理を行う](#終端処理を行う)
+      - [結果をリストとして保存する。](#結果をリストとして保存する)
+      - [条件にマッチするか調べる。](#条件にマッチするか調べる)
 - [繰り返し](#繰り返し)
 - [ラムダ式](#ラムダ式)
 - [ジェネリクス](#ジェネリクス)
@@ -30,6 +38,10 @@
       - [StringBuffer](#stringbuffer)
       - [StringBuilder](#stringbuilder)
 - [型](#型)
+- [ジェネリクス型](#ジェネリクス型)
+  - [境界ワイルドカード型](#境界ワイルドカード型)
+  - [匿名クラス](#匿名クラス)
+- [ラムダ式](#ラムダ式-1)
 - [クラス](#クラス)
 - [便利機能](#便利機能)
 
@@ -51,6 +63,8 @@ Javaプログラムでも、対象のクラスを起動した時、アクセス�
 
 
 ## ファイル入出力
+全般的なリファレンス: https://www.marcobehler.com/guides/java-files#_writing_reading_files
+
 ### ストリーム
     データの流れとその通り道
     データの受け渡しを抽象化したものです。あらゆるデータの入出力における基本的な概念です。
@@ -114,6 +128,7 @@ Javaにおける入出力の方法は以下である。
 コード量は少ない。
     Scannerが遅い理由
          Scanner クラスでは、7 つの nextXXX() メソッドの後に nextLine() メソッドを呼び出すと、nextLine() はコンソールから値を読み込まず、カーソルはコンソールに表示されません。
+         メモリを食う。
 
 ### 高速な方法
 
@@ -184,6 +199,43 @@ List<String> list = List.of("hoge", "fuga");
 ```
 
 #### Listをソートする。
+
+#### Listの空を判定する
+要素の個数が0であるか、判定できる。
+```
+array.isEmpty();
+```
+
+
+### コレクションのストリーム
+Java8から用意されたストリームを用いると、for文の全件処理を簡潔に記述できる。
+
+```
+list.stream().filter(pc->pc.getPrice()>=7000)
+```
+
+#### 配列からストリームを作る
+配列からもストリームを作成できる。
+```
+Arrays.stream(array)
+```
+
+#### 中間処理を行う
+##### フィルターリングする
+```
+.filter(elem->処理)
+```
+
+#### 終端処理を行う
+##### 結果をリストとして保存する。
+```
+.collect(toList());
+```
+
+##### 条件にマッチするか調べる。
+```
+.anyMatch()
+```
 
 
 ## 繰り返し
@@ -280,7 +332,20 @@ List<String> list = List.of("hoge", "fuga");
     指定した型と同じ、またはその型のスーパークラスを表す
     List<? super Integer>
 
-## メタアノテーション ･･･アノテーションにアノテーションをつけるアノテーション
+## ログ
+下記でログを記述できる。
+```
+private final static Logger logger = Logger.getLogger(this.getClass().toString())
+```
+
+### ファイルにログを出力する
+下記参照。
+https://qiita.com/kenRp01/items/f415eb999a661e1326e2
+```
+```
+
+## メタアノテーション
+ ･･･アノテーションにアノテーションをつけるアノテーション
 
     @Target
         アノテーションを適用できるプログラム要素宣言のタイプ（クラス、インターフェース、コンストラクターなど）を指定する。
@@ -352,16 +417,41 @@ List<String> list = List.of("hoge", "fuga");
                 calendar.setTimeInMillis(timestamp.getTime());
 
 
-## クラス
-    コンストラクタ
-        自分自身にすでに定義されているコンストラクタを呼び出す
-            this(引数);
-        親クラスのコンストラクタを呼び出す
-            super(); //Objectクラスの継承の際に明示的に呼び出すことがあるっぽい
+## ジェネリクス型
+### 境界ワイルドカード型
+```
+<? extends T>
+```
+```
+<? super T>
+```
 
-System.out.println
-    ArrayListを出力
-    Arrays.toString(some_array)
+### 匿名クラス
+匿名クラスを使うと、インタフェースを実装したクラスの宣言と、そのインスタンスを作る処理を、1つの式として書くことができます。
+上の ②と③を一度に済ますことができ、クラスファイルを作る必要もなくなります。
+
+## 例外
+### 例外の種類
+Checked Exception (チェック例外)
+    コンパイル時例外。
+    exceptions checked at compile time. Example - IOException
+
+Unchecked Exception (非チェック例外)
+    実行時に発覚する例外。
+    exceptions checked at run time. Example - NullPointerException
+
+Error
+    エラー。
+    It is irrecoverable. Example - OutOfMemoryError
+
+### プログラムにおける主な例外の原因
+- Invalid user input
+- Device failure
+- Loss of network connection
+- Physical limitations (out-of-disk memory)
+- Code errors
+- Opening an unavailable file
+
 
 ## 便利機能
     recordクラス    https://kamoqq.info/post/java-record-cheat-sheet/
