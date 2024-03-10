@@ -148,6 +148,13 @@ ArrayListやLinkedListはListインタフェースを実装しているので、
 要素を参照するシーンではArrayListが適している。
 挿入や削除が多いシーンではLinkedListが適している。
 
+### Set
+#### 順番を保持したSetを作る。
+LinkedHashSetを用いる。
+
+#### 自動的にソートされるSetを作る
+TreeSetを用いる。
+
 
 ### Collection系クラスの使い方
 Collectionは様々なクラスのオブジェクトに対応するために、ジェネリクス型（総称型）で定義されている。
