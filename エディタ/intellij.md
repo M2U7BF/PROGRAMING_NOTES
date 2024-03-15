@@ -8,7 +8,7 @@
 https://www.jetbrains.com/help/idea/configuring-keyboard-and-mouse-shortcuts.html#add-keyboard-shortcut
 
 画面を閉じる
-    
+
 
 
 # リファレンス
@@ -18,6 +18,8 @@ https://www.jetbrains.com/help/idea/configuring-keyboard-and-mouse-shortcuts.htm
 ファイルを開く
     command+E
 
+githubのコミットツールバーを出す
+    https://zenn.dev/harunonsystem/articles/webstorm_commit_tool_window
 
 ## エラー
 ### パッケージが読み込めない
