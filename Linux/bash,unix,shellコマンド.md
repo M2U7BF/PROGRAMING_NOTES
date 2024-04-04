@@ -3,6 +3,34 @@
   - [バックグラウンド実行](#バックグラウンド実行)
 - [システムの状況](#システムの状況)
 
+### 差分を取る
+diff
+
+#### ファイルの差分
+Unified形式
+```
+diff -u a.txt b.txt
+```
+
+カラム形式
+```
+diff -y a.txt b.txt
+```
+
+#### 単語単位の差分を出す
+```
+git diff --word-diff --no-index {1,2}.txt
+```
+git diffを使う
+https://qiita.com/tamanobi/items/74282b166ef4eb4c007b
+
+#### 中身を表示せずにディレクトリごと比較する
+```
+diff -rq {ディレクトリA} {ディレクトリB}
+```
+
+→ `vim -d`なんてものも
+https://maku77.github.io/vim/file/vimdiff.html
 
 ## 応用実行
 ### 一定間隔で実行する
