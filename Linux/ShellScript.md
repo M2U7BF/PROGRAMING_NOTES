@@ -7,12 +7,19 @@
 定義
 
 ### 配列
+#### man
+man bash、でarraysで検索
+
 #### 取り出し
 third_element=${array[2]}
 
 #### forループ
 for num in ${array[@]};do
 done
+
+### for文
+#### man
+man bash、でforで検索
 
 ## テクニック
 ### 分割保存
