@@ -8,7 +8,7 @@
 
 ### 配列
 #### man
-man bash、でarraysで検索
+man -a bash、でArraysで検索
 
 #### 取り出し
 third_element=${array[2]}
@@ -19,10 +19,11 @@ done
 
 ### for文
 #### man
-man bash、でforで検索
+man -a bash、でforで検索
 
 ## テクニック
 ### 分割保存
+１）
 ```
 elems=($(echo "$i" | tr ':' ' '))
 ```
@@ -31,3 +32,6 @@ elems=($(echo "$i" | tr ':' ' '))
 「echo "$i"」が入力
 「tr ':' ' '」で置き換え
 
+２）
+ちょっと意味が違うが似てる
+awk -F' ' '{print $0}'
