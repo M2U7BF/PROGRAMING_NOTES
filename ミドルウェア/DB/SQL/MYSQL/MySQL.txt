@@ -119,7 +119,7 @@
 
             テーブル単位
                 ```
-                mysqldump -u root -p jjstestrev foreigners --master-data --single-transaction > foreigners230222.dump
+                mysqldump -u root -p hoge foreigners --master-data --single-transaction > foreigners230222.dump
                 ```
 
         dbデータ取り込み
